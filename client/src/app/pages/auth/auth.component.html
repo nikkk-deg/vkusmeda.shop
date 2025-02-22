@@ -1,0 +1,25 @@
+<form class="wrapper-auth">
+  <div class="title__auth">Вход в аккаунт</div>
+  <div class="input-container__auth">
+    <input
+      name="email"
+      [(ngModel)]="email"
+      placeholder=""
+      class="input__auth"
+      type="email"
+      id="email"
+      required
+    />
+    <label class="label__auth" for="email">Электронная почта</label>
+  </div>
+  <button
+    (click)="onSubmit()"
+    class="btn__auth"
+    [ngClass]="{ 'error-btn': isErrorEmail() }"
+  >
+    {{ isErrorEmail() ? "Некорректный адрес почты" : "Отправить" }}
+  </button>
+  <div class="caption__auth">
+    Ваша ссылка на вход в аккаунт будет выслана на почту
+  </div>
+</form>

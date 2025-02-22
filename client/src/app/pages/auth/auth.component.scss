@@ -1,0 +1,117 @@
+:host {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  height: 100vh;
+  margin-top: -100px;
+}
+
+.wrapper-auth {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+
+.title__auth {
+  font-size: 40px;
+  font-weight: 300;
+  margin-bottom: 44px;
+}
+
+.btn__auth {
+  width: 466px;
+  border-radius: 35px;
+  height: 64px;
+  border: none;
+  background: var(--yellow-color);
+  cursor: pointer;
+
+  &:hover {
+    background: var(--dark-yellow-color);
+  }
+
+  font-size: 24px;
+  font-weight: 200;
+  margin-bottom: 20px;
+}
+.caption__auth {
+  font-weight: 100;
+}
+
+.input__auth {
+  width: 466px;
+  border-radius: 35px;
+  height: 64px;
+  border: var(--border);
+  padding-left: 40px;
+  font-size: 24px;
+  font-weight: 100;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.input__auth:focus {
+  border-color: #000; /* Оранжевая рамка */
+  outline: none;
+}
+
+.input-container__auth {
+  position: relative;
+}
+
+label {
+  cursor: pointer;
+  left: 40px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-80%);
+  background: white;
+  color: #525151;
+  font-size: 24px;
+  font-weight: 100;
+  transition: 0.3s;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  top: 6%;
+  font-size: 20px;
+}
+
+.error-btn {
+  background-color: red !important;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+@media (max-width: 460px) {
+  :host {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn__auth,
+  .input__auth {
+    width: 300px;
+    height: 60px;
+  }
+
+  .input__auth {
+    font-size: 20px;
+  }
+
+  .title__auth {
+    font-size: 34px;
+  }
+  .caption__auth {
+    width: 270px;
+  }
+}
+
+.error__send-email {
+  color: #fff;
+  background: red !important;
+}
