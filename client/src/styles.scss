@@ -1,1 +1,74 @@
-/* You can add global styles to this file, and also import other style files */
+@use "fonts";
+
+:root {
+  --dark-color: #000000;
+  --light-color: #ffffff;
+  --light-yellow-color: #fff7e3;
+  --light-grey-color: #f8f8f8;
+  --grey-color: #5f646d;
+  --yellow-color: #ffb813;
+  --red-color: #ff2b2b;
+  --dark-red-color: #cd5c5e;
+  --green-color: #85cd92;
+  --border: 1px solid var(--grey-color);
+  --dark-yellow-color: #e5a600;
+}
+
+*,
+*:before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+body {
+  overflow-x: hidden;
+  height: 100dvh;
+  font-family: "Roboto";
+  font-weight: 200;
+}
+
+@media (max-width: 460px) {
+  body {
+    height: 100vh;
+  }
+}
+
+.custom-checkbox {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.custom-checkbox input {
+  display: none;
+}
+
+.custom-checkbox span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border: 1px solid black;
+  border-radius: 2px;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+.custom-checkbox span::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-checkbox input:checked + span::before {
+  background: var(--yellow-color); /* Желтая заливка */
+}
