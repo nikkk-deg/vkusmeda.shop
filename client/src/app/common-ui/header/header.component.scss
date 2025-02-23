@@ -1,0 +1,8 @@
+.wrapper__header {
+  border-bottom: var(--border);
+  display: grid;
+  grid-template-columns: minmax(0, 1280px);
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+}

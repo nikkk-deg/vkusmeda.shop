@@ -1,0 +1,72 @@
+<div class="container__standert-header">
+  <div class="full-width__standert-header">
+    <ul class="menu-item-list__standrt-header">
+      <li>
+        <a
+          class="link-standart__header"
+          [routerLink]="['/']"
+          routerLinkActive="router-link-active"
+        >
+          <img width="100px" src="assets/svg/logo.svg" alt="logo.svg" />
+        </a>
+      </li>
+      <li>
+        <a
+          class="link-standart__header"
+          [routerLink]="['products']"
+          routerLinkActive="router-link-active"
+        >
+          Товары
+        </a>
+      </li>
+      <li>
+        <a
+          class="link-standart__header"
+          [routerLink]="['orders']"
+          routerLinkActive="router-link-active"
+        >
+          Заказы
+        </a>
+      </li>
+      <li>
+        <a
+          class="link-standart__header"
+          [routerLink]="['about']"
+          routerLinkActive="router-link-active"
+        >
+          О нас
+        </a>
+      </li>
+      <li>
+        <a
+          class="link-standart__header"
+          [routerLink]="['auth']"
+          routerLinkActive="router-link-active"
+        >
+          <img
+            width="58px"
+            [src]="
+              currentRoute === '/auth'
+                ? 'assets/svg/current-auth-icon.svg'
+                : 'assets/svg/auth-icon.svg'
+            "
+            alt="icon auth"
+          />
+        </a>
+      </li>
+      <li>
+        <a
+          class="link-standart__header"
+          [routerLink]="['basket']"
+          routerLinkActive="router-link-active"
+        >
+          <img
+            width="58px"
+            src="assets/svg/basket-icon.svg"
+            alt="icon basket"
+          />
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -4,12 +4,16 @@
 <div class="">Error user Auth</div>
 
 } @if(loadingEmail() || loadingUser()){
-<div class="loading__layout">
-  <img
-    src="/assets/images/loading-icon.png"
-    alt="icon loading"
-    class="loading-icon__layout"
-  />
+<div class="layout">
+  <div class="content__layout">
+    <div class="loading__layout">
+      <img
+        src="/assets/images/loading-icon.png"
+        alt="icon loading"
+        class="loading-icon__layout"
+      />
+    </div>
+  </div>
 </div>
 }@else {
 <div class="layout">
