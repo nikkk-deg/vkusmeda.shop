@@ -1,0 +1,100 @@
+:host {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1280px) 1fr;
+  background: #fff;
+  z-index: 10;
+  position: relative;
+  height: 300px;
+  padding-right: 32px;
+  padding-left: 34px;
+}
+
+.container__footer {
+  width: 100%;
+  z-index: 4;
+  display: grid;
+  font-weight: 100;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: top;
+  gap: 40px;
+  padding-top: 76px;
+}
+
+.img-logo__footer {
+  margin-top: -10px;
+  display: grid;
+  grid-template-columns: 68px 1fr;
+  align-items: center;
+  height: max-content;
+}
+
+.contacts-list__footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+.contacts-list-item__footer {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  align-items: end;
+}
+
+.contacts-list__footer {
+  list-style: none;
+}
+
+a,
+.address-caption__footer,
+.list-title__footer,
+.address-title__footer {
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+}
+
+.list-title__footer,
+.address-title__footer {
+  font-size: 20px;
+}
+
+.title__footer {
+  font-size: 36px;
+  white-space: nowrap;
+}
+
+.address-title__footer {
+  margin-bottom: 15px;
+}
+
+@media (max-width: 943px) {
+  .img-logo__footer {
+    margin-top: -5px;
+  }
+}
+
+@media (max-width: 460px) {
+  :host {
+    margin-bottom: 150px;
+  }
+  .container__footer {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    padding-bottom: 100px;
+  }
+  .address-title__footer,
+  .contacts-list__footer {
+    text-align: center;
+    justify-content: center;
+  }
+  .contacts-list__footer {
+    grid-template-columns: 1fr;
+  }
+  .contacts-list-item__footer {
+    grid-template-columns: 30px 1fr;
+    gap: 10px;
+    text-align: left;
+    margin-top: 10px;
+  }
+}
