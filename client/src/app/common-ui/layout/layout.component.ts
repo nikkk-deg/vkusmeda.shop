@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { HeaderMobileComponent } from '../header-mobile/header-mobile.component';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterOutlet } from '@angular/router';
@@ -14,12 +13,7 @@ import {
 
 @Component({
   selector: 'app-layout',
-  imports: [
-    HeaderMobileComponent,
-    HeaderComponent,
-    FooterComponent,
-    RouterOutlet,
-  ],
+  imports: [HeaderComponent, FooterComponent, RouterOutlet],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })
