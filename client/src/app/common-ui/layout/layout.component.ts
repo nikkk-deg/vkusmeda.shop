@@ -6,6 +6,7 @@ import { RouterOutlet } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { authActions } from '../../data/store/auth/auth.actions';
 import {
+  selectAuth,
   selectEmailLoading,
   selectUserError,
   selectUserLoading,

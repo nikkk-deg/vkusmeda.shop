@@ -3,6 +3,7 @@
     <ul class="menu-item-list__standrt-header">
       <li>
         <a
+          (click)="setIsLogout(false)"
           class="link-standart__header"
           [routerLink]="['/']"
           routerLinkActive="router-link-active"
@@ -12,6 +13,7 @@
       </li>
       <li>
         <a
+          (click)="setIsLogout(false)"
           class="link-standart__header"
           [routerLink]="['products']"
           routerLinkActive="router-link-active"
@@ -21,6 +23,7 @@
       </li>
       <li>
         <a
+          (click)="setIsLogout(false)"
           class="link-standart__header"
           [routerLink]="['orders']"
           routerLinkActive="router-link-active"
@@ -30,6 +33,7 @@
       </li>
       <li>
         <a
+          (click)="setIsLogout(false)"
           class="link-standart__header"
           [routerLink]="['about']"
           routerLinkActive="router-link-active"
@@ -38,6 +42,34 @@
         </a>
       </li>
       <li>
+        @if (user()?._id) {
+        <div
+          (click)="setIsLogout(true)"
+          class="user-icon-with-info__standart-header"
+        >
+          <img
+            width="58px"
+            [src]="
+              isLogout
+                ? 'assets/svg/current-logout-icon.svg'
+                : 'assets/svg/logout-icon.svg'
+            "
+            alt="icon auth"
+          />
+          @if(isLogout){
+          <button
+            (click)="logout()"
+            class="user-info__standart-icon logout-btn"
+          >
+            Выйти
+          </button>
+          }@else {
+          <div class="user-info__standart-icon">
+            {{ user()?.name ? user()?.name : user()?.email }}
+          </div>
+          }
+        </div>
+        }@else{
         <a
           class="link-standart__header"
           [routerLink]="['auth']"
@@ -53,17 +85,24 @@
             alt="icon auth"
           />
         </a>
+
+        }
       </li>
       <li>
         <a
+          (click)="setIsLogout(false)"
           class="link-standart__header"
           [routerLink]="['basket']"
           routerLinkActive="router-link-active"
         >
           <img
             width="58px"
-            src="assets/svg/basket-icon.svg"
-            alt="icon basket"
+            [src]="
+              currentRoute === '/basket'
+                ? 'assets/svg/current-basket-icon.svg'
+                : 'assets/svg/basket-icon.svg'
+            "
+            alt="icon auth"
           />
         </a>
       </li>

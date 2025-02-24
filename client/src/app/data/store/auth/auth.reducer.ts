@@ -29,7 +29,7 @@ export const authFeature = createFeature({
     on(authActions.getUser, (state, { token }) => ({ ...state, token })),
     //@ts-ignore
     on(authActions.getUserSuccess, (state, payload) => {
-      return { ...state, user: payload };
+      return { ...state, user: payload.user };
     }),
     on(authActions.logoutUser, () => {
       return {

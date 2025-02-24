@@ -18,3 +18,41 @@
 .menu-item-list__standrt-header li:first-child {
   margin-right: auto;
 }
+
+.user-icon-with-info__standart-header {
+  font-size: 14px;
+  position: relative;
+  cursor: pointer;
+}
+
+.user-info__standart-icon {
+  position: absolute;
+  left: 50%;
+  top: 70px;
+  transform: translate(-50%, -50%);
+  font-weight: 200;
+}
+
+.logout-btn {
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  margin-top: 23px;
+  position: absolute;
+  font-size: 12px;
+  font-size: 16px;
+  font-weight: 300;
+  border-radius: 25px;
+  width: 100px;
+  top: 60px;
+  height: 25px;
+  background: #fde5a5;
+
+  &:hover {
+    background: var(--yellow-color);
+  }
+}
+
+.router-link-active {
+  font-weight: 500;
+}

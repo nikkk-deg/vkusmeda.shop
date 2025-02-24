@@ -55,10 +55,11 @@ export class AuthService {
       tap(() => {
         this.cookieService.set('token', token);
         const currentLink = this.router.url;
+
+        this.store.dispatch(authActions.completeUser());
         if (currentLink.includes('auth')) {
           this.router.navigate(['']);
         }
-        this.store.dispatch(authActions.completeUser());
       }),
 
       catchError((error) => {

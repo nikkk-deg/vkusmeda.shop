@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { AuthService } from '../../data/services/auth.service';
+import { Component } from '@angular/core';
 import { StandartComponent } from './standart/standart.component';
 
 @Component({

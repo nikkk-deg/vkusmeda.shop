@@ -20,6 +20,20 @@ export class StandartComponent {
   router = inject(Router);
   user = this.store.selectSignal(selectAuth);
   currentRoute = ``;
+  authService = inject(AuthService);
+  isLogout = false;
+
+  setIsLogout(action: boolean) {
+    if (action) {
+      this.isLogout = !this.isLogout;
+    } else {
+      this.isLogout = false;
+    }
+  }
+
+  logout() {
+    this.authService.logout();
+  }
 
   constructor() {
     this.router.events.subscribe(() => {

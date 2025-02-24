@@ -38,12 +38,12 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.user()?._id) {
-      return;
-    }
+    // if (this.user()?._id) {
+    // return;
+    // }
+    console.log(1234);
     this.route.queryParamMap.subscribe((params) => {
       const token = params.get('token');
-
       if (token) {
         this.store.dispatch(authActions.getUser({ token: token }));
       }
