@@ -1,0 +1,20 @@
+<a
+  class="link-standart__header"
+  [routerLink]="['basket']"
+  routerLinkActive="router-link-active"
+>
+  @if(basketCount() > 0){
+  <div class="basket-count__basket-icon">
+    {{ basketCount() }}
+  </div>
+  }
+  <img
+    width="58px"
+    [src]="
+      currentRoute === '/basket'
+        ? 'assets/svg/current-basket-icon.svg'
+        : 'assets/svg/basket-icon.svg'
+    "
+    alt="icon auth"
+  />
+</a>

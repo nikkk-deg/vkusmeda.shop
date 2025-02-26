@@ -1,7 +1,7 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createSelector } from '@ngrx/store';
 import { authFeature, AuthState } from './auth.reducer';
 
-export const selectAuth = createSelector(
+export const selectUser = createSelector(
   authFeature.selectAuthFeatureState,
   (state: AuthState) => {
     return state.user;
@@ -40,5 +40,12 @@ export const selectEmailError = createSelector(
   authFeature.selectAuthFeatureState,
   (state: AuthState) => {
     return state.isErrorEmail;
+  }
+);
+
+export const selectBasket = createSelector(
+  authFeature.selectAuthFeatureState,
+  (state: AuthState) => {
+    return state.basket;
   }
 );

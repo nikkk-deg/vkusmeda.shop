@@ -1,0 +1,43 @@
+.user-icon-with-info__standart-header {
+  font-size: 14px;
+  position: relative;
+  cursor: pointer;
+  width: max-content;
+  z-index: 1000;
+}
+
+.user-info__standart-icon {
+  position: absolute;
+  left: 50%;
+  top: 70px;
+  transform: translate(-50%, -50%);
+  font-weight: 200;
+}
+
+.logout-btn {
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  margin-top: 23px;
+  position: absolute;
+  font-size: 12px;
+  font-size: 16px;
+  font-weight: 300;
+  border-radius: 25px;
+  width: 100px;
+  top: 60px;
+  height: 25px;
+  background: #fde5a5;
+
+  &:hover {
+    background: var(--yellow-color);
+  }
+}
+
+@media (max-width: 460px) {
+  .logout-btn {
+    margin-top: 12px;
+    height: 20px;
+    width: 80px;
+  }
+}

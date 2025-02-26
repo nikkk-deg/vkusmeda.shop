@@ -3,12 +3,12 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AuthService } from '../../../data/services/auth.service';
 import { selectUser } from '../../../data/store/auth/auth.selectors';
+import { CommonModule } from '@angular/common';
 import { AuthIconComponent } from '../auth-icon/auth-icon.component';
 import { BasketIconComponent } from '../basket-icon/basket-icon.component';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-burger',
+  selector: 'app-mobile-navbar',
   imports: [
     RouterLink,
     RouterLinkActive,
@@ -16,10 +16,10 @@ import { CommonModule } from '@angular/common';
     BasketIconComponent,
     CommonModule,
   ],
-  templateUrl: './burger.component.html',
-  styleUrl: './burger.component.scss',
+  templateUrl: './mobile-navbar.component.html',
+  styleUrl: './mobile-navbar.component.scss',
 })
-export class BurgerComponent {
+export class MobileNavbarComponent {
   store = inject(Store);
   router = inject(Router);
   user = this.store.selectSignal(selectUser);

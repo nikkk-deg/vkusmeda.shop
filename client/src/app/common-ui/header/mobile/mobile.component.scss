@@ -1,0 +1,39 @@
+:host {
+  background-color: #fff;
+  display: block;
+  display: grid;
+  grid-template-columns: auto auto;
+  padding-left: 38px;
+  padding-right: 38px;
+  width: 100%;
+  border-bottom: var(--border);
+  align-items: center;
+  justify-content: space-between;
+}
+.telephone-number {
+  text-decoration: none;
+  color: black;
+}
+.img__header-mobile {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 74px;
+  max-height: 74px;
+  z-index: 900;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.clickable-logo {
+  touch-action: manipulation;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+@media (min-width: 461px) {
+  :host {
+    display: none;
+  }
+}

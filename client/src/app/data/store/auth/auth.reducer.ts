@@ -1,3 +1,4 @@
+import { BasketInterface } from './../../interfaces/basket.interface';
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { UserInterface } from '../../interfaces/user.interface';
 import { authActions } from './auth.actions';
@@ -10,16 +11,24 @@ export interface AuthState {
   isError: boolean;
   isLoadingEmail: boolean;
   isErrorEmail: boolean;
+  isBasketLoading: boolean;
+  isBasketError: boolean;
+  basket: BasketInterface | null;
+  userId: string | null;
 }
 
 export const initialState: AuthState = {
   user: null,
+  userId: null,
   error: null,
   token: null,
   isLoading: false,
   isError: false,
   isLoadingEmail: false,
   isErrorEmail: false,
+  isBasketLoading: false,
+  isBasketError: false,
+  basket: null,
 };
 
 export const authFeature = createFeature({
@@ -29,7 +38,7 @@ export const authFeature = createFeature({
     on(authActions.getUser, (state, { token }) => ({ ...state, token })),
     //@ts-ignore
     on(authActions.getUserSuccess, (state, payload) => {
-      return { ...state, user: payload.user };
+      return { ...state, user: payload.user, userId: payload.user?._id };
     }),
     on(authActions.logoutUser, () => {
       return {
@@ -53,6 +62,13 @@ export const authFeature = createFeature({
       ...state,
       isLoadingEmail: false,
       isErrorEmail: false,
+    })),
+
+    on(authActions.getBasket, (state, { userId }) => ({ ...state, userId })),
+
+    on(authActions.getBasketSuccess, (state, payload) => ({
+      ...state,
+      basket: payload.basket,
     }))
   ),
 });

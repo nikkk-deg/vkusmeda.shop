@@ -12,8 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { authActions } from '../../data/store/auth/auth.actions';
 import {
-  selectAuth,
   selectEmailError,
+  selectUser,
 } from '../../data/store/auth/auth.selectors';
 
 @Component({
@@ -27,7 +27,7 @@ export class AuthComponent implements OnInit {
   route = inject(ActivatedRoute);
   email = '';
   store = inject(Store);
-  user = this.store.selectSignal(selectAuth);
+  user = this.store.selectSignal(selectUser);
   injector = inject(Injector);
   isErrorEmail = this.store.selectSignal(selectEmailError);
 
@@ -38,10 +38,6 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
-    // if (this.user()?._id) {
-    // return;
-    // }
-    console.log(1234);
     this.route.queryParamMap.subscribe((params) => {
       const token = params.get('token');
       if (token) {

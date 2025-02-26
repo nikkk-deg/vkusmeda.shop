@@ -123,7 +123,6 @@ export class OrdersService {
   async addNewUser(email: string) {
     const user = await this.userModel.findOne({ email: email });
     if (!user) {
-      console.log('creating new user');
       const newUser = await this.userModel.create({ email: email });
       newUser.save();
     }

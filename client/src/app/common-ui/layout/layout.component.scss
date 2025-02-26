@@ -1,4 +1,6 @@
 .layout {
+  padding-top: 105px;
+
   padding-left: 20px;
   padding-right: 20px;
   display: grid;
@@ -40,6 +42,7 @@
 
 @media (max-width: 460px) {
   .layout {
+    padding-top: 30px;
     grid-template-columns: 1fr minmax(0, 360px) 1fr;
   }
 }

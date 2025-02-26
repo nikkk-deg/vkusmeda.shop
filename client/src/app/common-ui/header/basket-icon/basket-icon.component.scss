@@ -1,0 +1,26 @@
+:host {
+  position: relative;
+}
+
+.link-standart__header {
+  position: relative;
+  text-decoration: none;
+  color: black;
+}
+
+.basket-count__basket-icon {
+  position: absolute;
+  z-index: 4000;
+  border: none;
+  width: 24px;
+  height: 24px;
+  background: var(--yellow-color);
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 200;
+  text-align: center;
+  align-items: center;
+  display: grid;
+  top: -50px;
+  right: -5px;
+}

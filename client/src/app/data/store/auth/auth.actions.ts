@@ -1,5 +1,6 @@
 import { createAction, createActionGroup, props } from '@ngrx/store';
 import { UserInterface } from '../../interfaces/user.interface';
+import { BasketInterface } from '../../interfaces/basket.interface';
 
 export const authActions = createActionGroup({
   source: 'auth',
@@ -13,5 +14,7 @@ export const authActions = createActionGroup({
     'Error Email': props<any>(),
     'Complete Email': props<any>(),
     'Complete User': props<any>(),
+    'Get Basket': props<{ userId: string }>(),
+    'Get Basket Success': props<{ basket: BasketInterface }>(),
   },
 });
