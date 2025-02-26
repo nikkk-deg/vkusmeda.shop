@@ -16,7 +16,7 @@
   font-weight: 100;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: top;
-  gap: 40px;
+  gap: 60px;
   padding-top: 76px;
 }
 
@@ -31,12 +31,13 @@
 .contacts-list__footer {
   display: grid;
   grid-template-columns: 1fr;
-  justify-items: center;
+  justify-items: start;
 }
 .contacts-list-item__footer {
   display: grid;
   grid-template-columns: 32px 1fr;
   align-items: end;
+  justify-items: left;
 }
 
 .contacts-list__footer {
@@ -88,6 +89,7 @@ a,
   .contacts-list__footer {
     text-align: center;
     justify-content: center;
+    justify-items: center;
   }
   .contacts-list__footer {
     grid-template-columns: 1fr;

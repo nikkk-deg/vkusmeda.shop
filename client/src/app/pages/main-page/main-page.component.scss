@@ -225,6 +225,10 @@ img {
     max-width: 240px;
   }
 
+  .title-text {
+    margin-top: -50px;
+  }
+
   .main-page-image,
   .main-page-image-wrapper {
     width: 240px;
@@ -248,5 +252,18 @@ img {
   .ellips-second {
     left: -50px;
     top: -350px;
+  }
+
+  :host {
+    position: relative;
+  }
+  .main-page-image-wrapper {
+    margin-top: -70px;
+    margin-left: 20px;
+  }
+
+  .active-btns {
+    bottom: 170px;
+    left: 50%;
   }
 }
