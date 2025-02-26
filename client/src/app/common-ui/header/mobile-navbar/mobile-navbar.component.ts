@@ -26,7 +26,7 @@ export class MobileNavbarComponent {
   currentRoute = ``;
   authService = inject(AuthService);
   isLogout = false;
-  isOpen = signal(true);
+  isOpen = signal(false);
 
   setIsLogout(action: boolean) {
     if (action) {

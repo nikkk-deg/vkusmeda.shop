@@ -1,9 +1,6 @@
 <app-header></app-header>
 
-@if(isErrorUser()){
-<div class="">Error user Auth</div>
-
-} @if(loadingEmail() || loadingUser()){
+@if(loadingEmail() || loadingUser()){
 <div class="layout">
   <div class="content__layout">
     <div class="loading__layout">

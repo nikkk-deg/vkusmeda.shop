@@ -41,6 +41,9 @@
 }
 
 @media (max-width: 460px) {
+  .loading__layout {
+    margin-top: -100px;
+  }
   .layout {
     padding-top: 30px;
     grid-template-columns: 1fr minmax(0, 360px) 1fr;
