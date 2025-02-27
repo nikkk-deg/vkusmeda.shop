@@ -1,15 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
-import {
-  map,
-  catchError,
-  switchMap,
-  EMPTY,
-  throwError,
-  retry,
-  delay,
-  filter,
-} from 'rxjs';
+import { map, catchError, switchMap, EMPTY } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { authActions } from './auth.actions';
 import { BasketService } from '../../services/basket.service';

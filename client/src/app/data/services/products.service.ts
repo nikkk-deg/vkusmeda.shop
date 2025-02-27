@@ -1,0 +1,33 @@
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { take, tap, catchError, EMPTY } from 'rxjs';
+import { productsActions } from '../store/product/product.actions';
+import { ProductInterface } from '../interfaces/product.interface';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ProductsService {
+  #http = inject(HttpClient);
+  apiUrl = 'http://localhost:3000/api/product';
+  store = inject(Store);
+
+  getProducts() {
+    this.store.dispatch(productsActions.loadProducts());
+    return this.#http.get<ProductInterface[]>(`${this.apiUrl}`).pipe(
+      take(1),
+      tap(() => {
+        this.store.dispatch(productsActions.completeProducts());
+      }),
+      catchError((error) => {
+        this.store.dispatch(productsActions.errorProducts());
+        setTimeout(() => {
+          this.store.dispatch(productsActions.completeProducts());
+        }, 1000);
+        console.error(`Error in get products request - \n ${error}`);
+        return EMPTY;
+      })
+    );
+  }
+}

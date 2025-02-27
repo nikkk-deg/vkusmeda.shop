@@ -9,12 +9,19 @@ import { LayoutComponent } from './common-ui/layout/layout.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { BasketComponent } from './pages/basket/basket.component';
+import { ProductEffects } from './data/store/product/product.effects';
+import { ProductFeature } from './data/store/product/product.reducer';
 
 export const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    providers: [provideState(authFeature), provideEffects(AuthEffects)],
+    providers: [
+      provideState(authFeature),
+      provideEffects(AuthEffects),
+      provideState(ProductFeature),
+      provideEffects(ProductEffects),
+    ],
     children: [
       { path: 'auth', component: AuthComponent },
       { path: '', component: MainPageComponent },

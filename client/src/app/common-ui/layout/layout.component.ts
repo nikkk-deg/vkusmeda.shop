@@ -12,6 +12,8 @@ import {
   selectUserError,
   selectUserLoading,
 } from '../../data/store/auth/auth.selectors';
+import { productsActions } from '../../data/store/product/product.actions';
+import { selectProductsLoading } from '../../data/store/product/product.selectors';
 
 @Component({
   selector: 'app-layout',
@@ -27,11 +29,13 @@ export class LayoutComponent implements OnInit {
   isErrorUser = this.store.selectSignal(selectUserError);
   basket = this.store.selectSignal(selectBasket);
   user = this.store.selectSignal(selectUser);
+  loadingProducts = this.store.selectSignal(selectProductsLoading);
 
   ngOnInit() {
     const token = this.cookieService.get('token');
     this.store.dispatch(authActions.getUser({ token }));
     //@ts-ignore
     this.store.dispatch(authActions.getBasket({ userId: this.user()?._id }));
+    this.store.dispatch(productsActions.getProducts());
   }
 }

@@ -1,0 +1,35 @@
+<div class="card-wrapper__product-card">
+  <img
+    (click)="navigateTo(product._id)"
+    [src]="'/assets/images/honey/' + product.photos[0]"
+    [alt]="product.titleRu + ' photo'"
+    class="iamge__product-card"
+    height="173px"
+    width="222px"
+  />
+  <p class="title__product-card">{{ product.titleRu }}</p>
+  <p class="amount__product-card">1 л</p>
+  <p class="caption__product-card">
+    {{ product.microCaption }}
+  </p>
+
+  <div class="price-with-btn__product-card">
+    <p class="price__product-card">
+      {{ product.price }}
+
+      <span class="price_product-card">
+        <img width="17px" src="/assets/svg/rubble-icon.svg" alt="rubble icon"
+      /></span>
+    </p>
+
+    @if (isInBasket) {
+    <a [routerLink]="['/basket']" class="to-basket__product-card">
+      В корзину
+    </a>
+    }@else {
+    <button (click)="addToBasket(product._id)" class="buy-btn__product-card">
+      <div class="buy-title__product-card">Купить</div>
+    </button>
+    }
+  </div>
+</div>
