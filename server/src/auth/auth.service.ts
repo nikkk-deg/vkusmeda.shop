@@ -20,8 +20,12 @@ export class AuthService {
 
   async login(token: string) {
     const payload = this.jwtService.verify(token);
-    const user = await this.findUser({ email: payload.email });
-    return user;
+    const user = await this.userModel.findOne({ email: payload.email });
+    if (user) {
+      return user;
+    } else {
+      return this.createUser({ email: payload.email });
+    }
   }
 
   async sendLoginLink(email: string) {

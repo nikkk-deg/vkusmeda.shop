@@ -35,6 +35,7 @@ export class MailerService {
 
     try {
       const result = await transport.sendMail(options);
+
       return result;
     } catch (err) {
       throw new HttpException(`Email did not sent. Error - ${err}`, 500);

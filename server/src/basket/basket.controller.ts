@@ -3,6 +3,7 @@ import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
 import { BasketService } from './basket.service';
 import { RemoveFromBasketDto } from './dto/remove-from-basket.dto';
 import { ChangeBasketJarsDto } from './dto/change-basket.dto';
+import { SyncBasketDto } from './dto/sync-basket.dto';
 
 @Controller('basket')
 export class BasketController {
@@ -30,5 +31,11 @@ export class BasketController {
   @Post('decrease')
   decreaseFromBasket(@Body() payload: ChangeBasketJarsDto) {
     return this.basketService.decreaseProduct(payload);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('syncBasket')
+  syncWithLocalBasket(@Body() payload: SyncBasketDto) {
+    return this.basketService.syncBasketWithLogin(payload);
   }
 }

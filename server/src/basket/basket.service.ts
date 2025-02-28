@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 import { User } from 'src/schemas/User.schema';
 import { RemoveFromBasketDto } from './dto/remove-from-basket.dto';
 import { ChangeBasketJarsDto } from './dto/change-basket.dto';
+import { SyncBasketDto } from './dto/sync-basket.dto';
 
 @Injectable()
 export class BasketService {
@@ -177,5 +178,28 @@ export class BasketService {
     const user = await this.userModel.findById(userId);
     if (!user) return false;
     return true;
+  }
+
+  async syncBasketWithLogin(payload: SyncBasketDto) {
+    let basket = await this.basketModel.findOne({ _id: payload.userId });
+
+    if (!basket) {
+      await this.createBasketIfNotExists(payload.userId);
+    }
+
+    basket = await this.basketModel.findOne({ _id: payload.userId });
+
+    payload.products.forEach((product) => {
+      const productIndex = basket.products.findIndex((item) => {
+        //@ts-ignore
+        return item.productId.toString() === product.productId;
+      });
+      if (productIndex > -1) {
+        basket.products[productIndex].jars += product.jars;
+      } else {
+        basket.products.push(product);
+      }
+    });
+    return await basket.save();
   }
 }
