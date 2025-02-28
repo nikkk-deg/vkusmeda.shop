@@ -20,10 +20,11 @@ export class BasketIconComponent {
 
   constructor() {
     effect(() => {
-      this.basketCount.set(
-        //@ts-ignore
-        this.basket()?.products.reduce((acc, item) => acc.jars + item.jars)
-      );
+      let sum = 0;
+      this.basket()?.products.forEach((item) => {
+        sum += item.jars;
+      });
+      this.basketCount.set(sum);
     });
 
     this.router.events.subscribe(() => {

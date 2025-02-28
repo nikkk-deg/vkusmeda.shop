@@ -1,5 +1,5 @@
-<p>products works!</p>
-
-<pre>
-  {{ products() | json }}
-</pre>
+<div class="catalog">
+  @for (product of products(); track $index) {
+  <app-product-card [product]="product" [isInBasket]="false"></app-product-card>
+  }
+</div>

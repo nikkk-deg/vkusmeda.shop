@@ -66,9 +66,11 @@ export const authFeature = createFeature({
 
     on(authActions.getBasket, (state, { userId }) => ({ ...state, userId })),
 
-    on(authActions.getBasketSuccess, (state, payload) => ({
-      ...state,
-      basket: payload.basket,
-    }))
+    on(authActions.getBasketSuccess, (state, payload) => {
+      return {
+        ...state,
+        basket: payload.basket,
+      };
+    })
   ),
 });

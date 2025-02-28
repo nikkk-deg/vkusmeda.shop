@@ -1,6 +1,15 @@
 import { inject, Injectable } from '@angular/core';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
-import { map, catchError, switchMap, EMPTY } from 'rxjs';
+import {
+  map,
+  catchError,
+  switchMap,
+  EMPTY,
+  throwError,
+  retry,
+  delay,
+  filter,
+} from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { authActions } from './auth.actions';
 import { BasketService } from '../../services/basket.service';
@@ -36,12 +45,17 @@ export class AuthEffects {
   getBasket$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(authActions.getUserSuccess),
+      //@ts-ignore
       switchMap((res) => {
-        //@ts-ignore
-        return this.basketService.getBasket(res.user?._id);
+        if (res.user?._id) {
+          return this.basketService.getBasket(res.user?._id);
+        } else {
+          return this.basketService.getBasket('');
+        }
       }),
       map((res) => {
         return authActions.getBasketSuccess({
+          //@ts-ignore
           basket: res,
         });
       }),

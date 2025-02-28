@@ -3,6 +3,8 @@ import { Router, RouterLink } from '@angular/router';
 import { ProductInterface } from '../../../data/interfaces/product.interface';
 import { BasketService } from '../../../data/services/basket.service';
 import { JsonPipe } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { authActions } from '../../../data/store/auth/auth.actions';
 
 @Component({
   selector: 'app-product-card',
@@ -13,8 +15,8 @@ import { JsonPipe } from '@angular/common';
 export class ProductCardComponent {
   router = inject(Router);
   basketService = inject(BasketService);
+  store = inject(Store);
 
-  //@ts-ignore
   @Input() isInBasket: boolean = false;
 
   @Input() product: ProductInterface = {
@@ -34,6 +36,7 @@ export class ProductCardComponent {
   }
 
   addToBasket(productId: string) {
-    this.basketService.addToBasket(productId, 1);
+    this.basketService.addToBasket(productId, 1, this.product);
+    this.store.dispatch(authActions.getUserSuccess({ user: null }));
   }
 }

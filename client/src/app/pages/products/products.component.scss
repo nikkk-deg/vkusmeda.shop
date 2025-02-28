@@ -1,0 +1,26 @@
+:host {
+  display: grid;
+  position: relative;
+  margin: 50px;
+  grid-template-columns: 205px 1fr;
+}
+
+.catalog {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, 220px);
+}
+
+@media (max-width: 460px) {
+  :host {
+    grid-template-columns: 1fr;
+    // margin-left: 32px;
+  }
+}
+
+@media (max-width: 330px) {
+  :host {
+    grid-template-columns: 1fr;
+    margin-left: 6px;
+  }
+}
