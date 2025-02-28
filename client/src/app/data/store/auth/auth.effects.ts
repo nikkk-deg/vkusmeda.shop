@@ -1,19 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { createEffect, ofType, Actions } from '@ngrx/effects';
-import {
-  map,
-  catchError,
-  switchMap,
-  EMPTY,
-  throwError,
-  retry,
-  delay,
-  filter,
-} from 'rxjs';
+import { map, catchError, switchMap, EMPTY, of } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { authActions } from './auth.actions';
 import { BasketService } from '../../services/basket.service';
 import { Store } from '@ngrx/store';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +15,7 @@ export class AuthEffects {
   basketService = inject(BasketService);
   actions$ = inject(Actions);
   store = inject(Store);
+  localStorageService = inject(LocalStorageService);
 
   getUser$ = createEffect(() => {
     return this.actions$.pipe(
@@ -45,15 +38,25 @@ export class AuthEffects {
   getBasket$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(authActions.getUserSuccess),
-      //@ts-ignore
       switchMap((res) => {
+        // if (localBasket) {
+        //   return this.basketService.syncBasket();
+        // } else {
         if (res.user?._id) {
-          return this.basketService.getBasket(res.user?._id);
+          const localBasket = this.localStorageService.getItem('basket');
+          if (localBasket) {
+            return this.basketService.syncBasket();
+          } else {
+            return this.basketService.getBasket(res.user?._id);
+          }
         } else {
           return this.basketService.getBasket('');
         }
+        // }
       }),
+
       map((res) => {
+        console.log(res);
         return authActions.getBasketSuccess({
           //@ts-ignore
           basket: res,

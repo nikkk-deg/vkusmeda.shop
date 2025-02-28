@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CookieService } from 'ngx-cookie-service';
 import { BasketInterface } from '../interfaces/basket.interface';
-import { catchError, EMPTY, of, take, tap } from 'rxjs';
+import { catchError, delay, EMPTY, of, take, tap } from 'rxjs';
 import { authActions } from '../store/auth/auth.actions';
 import { selectUser } from '../store/auth/auth.selectors';
 import { LocalStorageService } from './local-storage.service';
@@ -30,6 +30,7 @@ export class BasketService {
       return of(this.localStorageService.getItem<BasketInterface>('basket'));
     } else {
       this.store.dispatch(authActions.loadUser());
+
       return this.#http
         .get<BasketInterface>(`${this.apiUrl}${userId}`, headers)
         .pipe(
@@ -65,6 +66,7 @@ export class BasketService {
           ],
         });
       } else {
+        console.log(this.localStorageService.getItem('basket'));
         const existingProduct = localBasket.products.filter((item) => {
           //@ts-ignore
           return item.productId._id === product._id;
@@ -89,5 +91,40 @@ export class BasketService {
         }
       }
     }
+  }
+
+  syncBasket() {
+    const headers = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.cookieService.get('token')}`,
+      }),
+    };
+
+    const localBasket = this.localStorageService.getItem('basket');
+    if (localBasket) {
+      const basketArrayOfId: {
+        productId: string;
+        jars: number;
+      }[] = [];
+      //@ts-ignore
+      localBasket.products.forEach((item) => {
+        basketArrayOfId.push({
+          productId: item.productId._id,
+          jars: item.jars,
+        });
+      });
+      const body = {
+        userId: this.user()?._id,
+        //@ts-ignore
+        products: basketArrayOfId,
+      };
+      return this.#http.post(`${this.apiUrl}syncBasket`, body, headers).pipe(
+        take(1),
+        tap(() => {
+          this.localStorageService.clear();
+        })
+      );
+    }
+    return EMPTY;
   }
 }

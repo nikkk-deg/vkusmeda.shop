@@ -200,6 +200,7 @@ export class BasketService {
         basket.products.push(product);
       }
     });
-    return await basket.save();
+    await basket.save();
+    return this.getBasket(payload.userId.toString());
   }
 }
