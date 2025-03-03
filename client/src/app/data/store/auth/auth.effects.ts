@@ -39,9 +39,6 @@ export class AuthEffects {
     return this.actions$.pipe(
       ofType(authActions.getUserSuccess),
       switchMap((res) => {
-        // if (localBasket) {
-        //   return this.basketService.syncBasket();
-        // } else {
         if (res.user?._id) {
           const localBasket = this.localStorageService.getItem('basket');
           if (localBasket) {
@@ -52,11 +49,9 @@ export class AuthEffects {
         } else {
           return this.basketService.getBasket('');
         }
-        // }
       }),
 
       map((res) => {
-        console.log(res);
         return authActions.getBasketSuccess({
           //@ts-ignore
           basket: res,

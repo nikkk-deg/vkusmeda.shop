@@ -6,12 +6,20 @@ export interface ProductState {
   products: ProductInterface[] | [];
   isLoading: boolean;
   isError: boolean;
+  filters: {
+    sortBy: string;
+    selected: string[];
+  };
 }
 
 export const initialStateProducts: ProductState = {
   products: [],
   isLoading: false,
   isError: false,
+  filters: {
+    sortBy: 'popular',
+    selected: [],
+  },
 };
 
 export const ProductFeature = createFeature({
@@ -31,6 +39,10 @@ export const ProductFeature = createFeature({
       ...state,
       isError: false,
       isLoading: false,
+    })),
+    on(productsActions.setFilters, (state, payload) => ({
+      ...state,
+      filters: payload.filters,
     }))
   ),
 });

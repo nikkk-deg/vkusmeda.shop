@@ -1,0 +1,29 @@
+<div class="wrapper__filters-desktop">
+  <div class="title__filters-desktop">Фильтры</div>
+
+  <div class="select__filters-desktop">
+    <div class="title-select__filters-desktop">Сначала</div>
+    <select [formControl]="sortControl" class="select__filters-product-page">
+      <option value="popular">популярное</option>
+      <option value="price-down">дешевле</option>
+      <option value="price-up">дороже</option>
+    </select>
+  </div>
+
+  <ul class="categories__filters-desktop">
+    <div class="title-categories__filters-desktop">По сортам:</div>
+    @for (item of categories(); track $index) {
+    <li (click)="changeCategory(item)" class="item-list__filters-product-page">
+      <label class="custom-checkbox">
+        <input [checked]="isChecked(item)" type="checkbox" />
+        <span class="checkbox-icon"></span>
+      </label>
+      <div class="category__filters-product-page">{{ item }}</div>
+    </li>
+    }
+  </ul>
+
+  <button (click)="clearFilters()" class="clear__filters-product-page">
+    Очистить
+  </button>
+</div>

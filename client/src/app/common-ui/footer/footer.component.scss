@@ -2,22 +2,22 @@
   display: grid;
   grid-template-columns: 1fr minmax(0, 1280px) 1fr;
   background: #fff;
-  z-index: 10;
   position: relative;
   height: 300px;
   padding-right: 32px;
   padding-left: 34px;
+  z-index: -1;
 }
 
 .container__footer {
   width: 100%;
-  z-index: 4;
   display: grid;
   font-weight: 100;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: top;
   gap: 60px;
   padding-top: 76px;
+  background: #fff;
 }
 
 .img-logo__footer {
@@ -72,9 +72,10 @@ a,
   }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 660px) {
   :host {
     margin-bottom: 150px;
+    height: max-content;
   }
 
   .container__footer {
@@ -82,7 +83,7 @@ a,
     justify-content: center;
     justify-items: center;
     align-items: center;
-    height: 600px;
+    min-height: 600px;
     padding-bottom: 100px;
   }
   .address-title__footer,

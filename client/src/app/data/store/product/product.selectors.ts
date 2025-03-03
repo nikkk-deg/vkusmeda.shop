@@ -21,3 +21,10 @@ export const selectProductsError = createSelector(
     return state.isError;
   }
 );
+
+export const selectFilters = createSelector(
+  ProductFeature.selectProductFeatureState,
+  (state: ProductState) => {
+    return state.filters;
+  }
+);

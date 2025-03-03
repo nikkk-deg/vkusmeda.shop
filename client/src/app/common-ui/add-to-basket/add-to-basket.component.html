@@ -1,1 +1,26 @@
-<p>add-to-basket works!</p>
+@if (isInBasket()) {
+<div class="product-in-basket_add-to-basket">
+  <img
+    (click)="addToBasket(-1)"
+    src="/assets/svg/decrease-icon.svg"
+    alt="decrease-icon"
+    width="25px"
+    class="decrease--in-basket__add-to-basket"
+  />
+  <div class="product-count-in-basket__add-to-basket">
+    {{ productCount() }}
+  </div>
+  <img
+    (click)="addToBasket(1)"
+    src="/assets/svg/increase-icon.svg"
+    alt="decrease-icon"
+    width="25px"
+    class="decrease--in-basket__add-to-basket"
+  />
+</div>
+
+}@else {
+<button (click)="addToBasket(1)" class="buy-btn__product-card">
+  <div class="buy-title__product-card">Купить</div>
+</button>
+}

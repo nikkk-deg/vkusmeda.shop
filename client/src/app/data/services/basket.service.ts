@@ -50,46 +50,45 @@ export class BasketService {
     }
   }
 
-  addToBasket(productId: string, jars: number, product: any = null) {
-    if (this.user()) {
-      return;
-    } else {
-      const localBasket =
-        this.localStorageService.getItem<BasketInterface>('basket');
-      if (!localBasket) {
-        this.localStorageService.setItem('basket', {
-          products: [
-            {
-              productId: product,
-              jars: 1,
-            },
-          ],
-        });
-      } else {
-        console.log(this.localStorageService.getItem('basket'));
-        const existingProduct = localBasket.products.filter((item) => {
-          //@ts-ignore
-          return item.productId._id === product._id;
-        });
-
-        if (existingProduct.length) {
-          const index = localBasket.products.findIndex(
-            //@ts-ignore
-
-            (item) => item.productId._id === product._id
-          );
-          localBasket.products[index].jars += 1;
-          this.localStorageService.setItem('basket', localBasket);
-        } else {
-          localBasket.products.push({
-            //@ts-ignore
-
+  changeToBasket(product: any = null, count: number) {
+    const localBasket =
+      this.localStorageService.getItem<BasketInterface>('basket');
+    if (!localBasket) {
+      this.localStorageService.setItem('basket', {
+        products: [
+          {
             productId: product,
-            jars: 1,
-          });
-          this.localStorageService.setItem('basket', localBasket);
-        }
+            jars: count,
+          },
+        ],
+      });
+      return EMPTY;
+    } else {
+      const existingProduct = localBasket.products.filter((item) => {
+        //@ts-ignore
+        return item.productId._id === product._id;
+      });
+
+      if (existingProduct.length) {
+        const index = localBasket.products.findIndex(
+          //@ts-ignore
+
+          (item) => item.productId._id === product._id
+        );
+        localBasket.products[index].jars += count;
+        this.localStorageService.setItem('basket', localBasket);
+      } else {
+        localBasket.products.push({
+          //@ts-ignore
+
+          productId: product,
+          jars: 1,
+        });
+        this.localStorageService.setItem('basket', localBasket);
       }
+
+      // }
+      return EMPTY;
     }
   }
 
@@ -101,6 +100,7 @@ export class BasketService {
     };
 
     const localBasket = this.localStorageService.getItem('basket');
+
     if (localBasket) {
       const basketArrayOfId: {
         productId: string;

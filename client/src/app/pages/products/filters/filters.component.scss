@@ -1,0 +1,46 @@
+:host {
+  border-right: var(--border);
+  margin-top: -49px;
+  padding-top: 49px;
+  margin-bottom: -100px;
+  padding-bottom: 100px;
+  position: relative;
+}
+.wrapper-desktop__filters {
+  position: sticky;
+  max-height: calc(100vh - 20px);
+  top: 10px;
+  overflow-y: auto;
+}
+
+.wrapper-mobile__filters {
+  display: none;
+}
+
+@media (max-width: 660px) {
+  :host {
+    margin-top: -80px;
+    padding-top: 80px;
+  }
+}
+
+@media (max-width: 460px) {
+  :host {
+    border: var(--border);
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    width: 328px;
+    height: 46px;
+    border-radius: 22px;
+    background: #fff;
+    bottom: 120px;
+  }
+  .wrapper-desktop__filters {
+    display: none;
+  }
+
+  .wrapper-mobile__filters {
+    display: block;
+  }
+}

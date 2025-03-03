@@ -22,14 +22,6 @@
       /></span>
     </p>
 
-    @if (isInBasket) {
-    <a [routerLink]="['/basket']" class="to-basket__product-card">
-      В корзину
-    </a>
-    }@else {
-    <button (click)="addToBasket(product._id)" class="buy-btn__product-card">
-      <div class="buy-title__product-card">Купить</div>
-    </button>
-    }
+    <app-add-to-basket [product]="product"></app-add-to-basket>
   </div>
 </div>

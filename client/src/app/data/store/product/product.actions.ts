@@ -9,5 +9,12 @@ export const productsActions = createActionGroup({
     'Load Products': emptyProps(),
     'Error Products': emptyProps(),
     'Complete Products': emptyProps(),
+    'Set Filters': props<{
+      filters: {
+        sortBy: string;
+        selected: string[] | [];
+      };
+    }>(),
+    'Reset Filters': emptyProps(),
   },
 });

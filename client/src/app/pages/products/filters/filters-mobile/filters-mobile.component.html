@@ -1,0 +1,39 @@
+<div (click)="setIsVisible()" class="wrapper__filters-mobile">
+  <div class="title__filters-mobile">Фильтры</div>
+</div>
+
+@if(isVisible()){
+<div class="wrapper-filters__filters-mobile">
+  <div class="wrapper-hidden__filters-mobile">
+    <ul class="categories__filters-desktop">
+      @for (item of categories(); track $index) {
+      <li
+        (click)="changeCategory(item)"
+        class="item-list__filters-product-page"
+      >
+        <label class="custom-checkbox">
+          <input [checked]="isChecked(item)" type="checkbox" />
+          <span class="checkbox-icon"></span>
+        </label>
+        <div class="category__filters-product-page">{{ item }}</div>
+      </li>
+      }
+    </ul>
+    <div class="select__filters-mobile">
+      <div class="title-select____filters-mobile">Сначала</div>
+      <select [formControl]="sortControl" class="select__filters-mobile">
+        <option value="popular">популярное</option>
+        <option value="price-down">дешевле</option>
+        <option value="price-up">дороже</option>
+      </select>
+    </div>
+
+    <button (click)="clearFilters()" class="clear__filters-mobile">
+      Очистить
+    </button>
+    <button (click)="setIsVisible()" class="close__filters-mobile">
+      Закрыть
+    </button>
+  </div>
+</div>
+}

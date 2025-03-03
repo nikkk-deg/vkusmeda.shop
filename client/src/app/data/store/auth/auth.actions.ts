@@ -1,6 +1,7 @@
 import { createAction, createActionGroup, props } from '@ngrx/store';
 import { UserInterface } from '../../interfaces/user.interface';
 import { BasketInterface } from '../../interfaces/basket.interface';
+import { ProductInterface } from '../../interfaces/product.interface';
 
 export const authActions = createActionGroup({
   source: 'auth',
@@ -16,5 +17,8 @@ export const authActions = createActionGroup({
     'Complete User': props<any>(),
     'Get Basket': props<{ userId: string }>(),
     'Get Basket Success': props<{ basket: BasketInterface }>(),
+    'Add To  Basket': props<{
+      item: { productId: ProductInterface; jars: number };
+    }>(),
   },
 });

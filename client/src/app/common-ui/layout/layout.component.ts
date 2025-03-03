@@ -14,6 +14,7 @@ import {
 } from '../../data/store/auth/auth.selectors';
 import { productsActions } from '../../data/store/product/product.actions';
 import { selectProductsLoading } from '../../data/store/product/product.selectors';
+import { FiltersService } from '../../data/services/filters.service';
 
 @Component({
   selector: 'app-layout',
@@ -30,8 +31,11 @@ export class LayoutComponent implements OnInit {
   basket = this.store.selectSignal(selectBasket);
   user = this.store.selectSignal(selectUser);
   loadingProducts = this.store.selectSignal(selectProductsLoading);
+  filtersService = inject(FiltersService);
 
   ngOnInit() {
+    this.filtersService.getFiltersFromSSAndDispatch();
+
     const token = this.cookieService.get('token');
     this.store.dispatch(authActions.getUser({ token }));
     //@ts-ignore

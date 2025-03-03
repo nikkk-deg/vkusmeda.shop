@@ -3,7 +3,6 @@ import {
   IsNotEmpty,
   IsMongoId,
   IsNumber,
-  Min,
   ValidateNested,
   ArrayNotEmpty,
 } from 'class-validator';
@@ -15,7 +14,6 @@ class Product {
   productId: mongoose.Schema.Types.ObjectId;
 
   @IsNumber()
-  @Min(1)
   jars: number;
 }
 

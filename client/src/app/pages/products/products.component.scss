@@ -1,20 +1,31 @@
 :host {
   display: grid;
   position: relative;
-  margin: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   grid-template-columns: 205px 1fr;
 }
 
 .catalog {
   display: grid;
   gap: 30px;
-  grid-template-columns: repeat(auto-fit, 220px);
+  grid-template-columns: repeat(auto-fill, 220px);
+  justify-content: end;
+  padding-left: 10px;
+}
+
+@media (max-width: 660px) {
+  :host {
+    margin-top: 80px;
+  }
 }
 
 @media (max-width: 460px) {
   :host {
+    margin-top: 0;
     grid-template-columns: 1fr;
-    // margin-left: 32px;
+    justify-items: center;
+    min-height: 700px;
   }
 }
 
@@ -22,5 +33,11 @@
   :host {
     grid-template-columns: 1fr;
     margin-left: 6px;
+  }
+}
+
+@media (max-width: 714px) {
+  .catalog {
+    justify-self: center;
   }
 }
