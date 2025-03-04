@@ -33,6 +33,6 @@ export class ProductCardComponent {
   };
 
   navigateTo(_id: string) {
-    this.router.navigate([`product/${_id}`]);
+    this.router.navigate([`product/${_id}/${this.product.titleEn}`]);
   }
 }

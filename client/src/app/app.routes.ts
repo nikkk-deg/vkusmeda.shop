@@ -11,6 +11,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { BasketComponent } from './pages/basket/basket.component';
 import { ProductEffects } from './data/store/product/product.effects';
 import { ProductFeature } from './data/store/product/product.reducer';
+import { ProductComponent } from './pages/product/product.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,7 @@ export const routes: Routes = [
       { path: '', component: MainPageComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'basket', component: BasketComponent },
+      { path: 'product/:productId/:productSlug', component: ProductComponent },
     ],
   },
 ];
