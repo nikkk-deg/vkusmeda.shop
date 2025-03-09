@@ -196,6 +196,9 @@ export class BasketService {
       });
       if (productIndex > -1) {
         basket.products[productIndex].jars += product.jars;
+        if (basket.products[productIndex].jars === 0) {
+          basket.products.splice(productIndex, 1);
+        }
       } else {
         basket.products.push(product);
       }

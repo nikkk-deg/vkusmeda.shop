@@ -2,7 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CookieService } from 'ngx-cookie-service';
-import { BasketInterface } from '../interfaces/basket.interface';
+import {
+  BasketInterface,
+  ProductInterfaceForBasket,
+} from '../interfaces/basket.interface';
 import { catchError, delay, EMPTY, of, take, tap } from 'rxjs';
 import { authActions } from '../store/auth/auth.actions';
 import { selectUser } from '../store/auth/auth.selectors';
@@ -50,6 +53,42 @@ export class BasketService {
     }
   }
 
+  deleteManyFromBasket(products: ProductInterfaceForBasket[]) {
+    if (this.user()) {
+      const headers = {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.cookieService.get('token')}`,
+        }),
+      };
+
+      products.forEach((item) => {
+        this.#http
+          .post(
+            'http://localhost:3000/api/basket/remove',
+            { userId: this.user()?._id, productId: item.productId._id },
+            headers
+          )
+          .pipe(take(1))
+          .subscribe();
+      });
+    }
+    const localBasket =
+      this.localStorageService.getItem<BasketInterface>('basket');
+
+    products.forEach((item) => {
+      const index = localBasket?.products.findIndex((j) => {
+        return j.productId._id === item.productId._id;
+      });
+
+      //@ts-ignore
+      if (index > -1) {
+        //@ts-ignore
+        localBasket?.products.splice(index, 1);
+      }
+    });
+    this.localStorageService.setItem('basket', localBasket);
+  }
+
   changeToBasket(product: any = null, count: number) {
     const localBasket =
       this.localStorageService.getItem<BasketInterface>('basket');
@@ -76,6 +115,9 @@ export class BasketService {
           (item) => item.productId._id === product._id
         );
         localBasket.products[index].jars += count;
+        if (localBasket.products[index].jars === 0) {
+          localBasket.products.splice(index, 1);
+        }
         this.localStorageService.setItem('basket', localBasket);
       } else {
         localBasket.products.push({
@@ -115,7 +157,6 @@ export class BasketService {
       });
       const body = {
         userId: this.user()?._id,
-        //@ts-ignore
         products: basketArrayOfId,
       };
       return this.#http.post(`${this.apiUrl}syncBasket`, body, headers).pipe(

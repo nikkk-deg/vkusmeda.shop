@@ -28,7 +28,6 @@ export class ProductsComponent {
 
   setProductsWithFilters() {
     const filtered: ProductInterface[] = [];
-    console.log(this.filters());
     this.productsFromStore().forEach((item) => {
       if (this.filters().selected.length === 0) {
         filtered.push(item);

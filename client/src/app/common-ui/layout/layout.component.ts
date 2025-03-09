@@ -12,9 +12,10 @@ import {
   selectUserError,
   selectUserLoading,
 } from '../../data/store/auth/auth.selectors';
-import { productsActions } from '../../data/store/product/product.actions';
-import { selectProductsLoading } from '../../data/store/product/product.selectors';
 import { FiltersService } from '../../data/services/filters.service';
+import { selectProductsLoading } from '../../data/store/product/product.selectors';
+import { productsActions } from '../../data/store/product/product.actions';
+import { PreOrderService } from '../../data/services/pre-order.service';
 
 @Component({
   selector: 'app-layout',
@@ -32,9 +33,11 @@ export class LayoutComponent implements OnInit {
   user = this.store.selectSignal(selectUser);
   loadingProducts = this.store.selectSignal(selectProductsLoading);
   filtersService = inject(FiltersService);
+  preOrderService = inject(PreOrderService);
 
   ngOnInit() {
     this.filtersService.getFiltersFromSSAndDispatch();
+    this.preOrderService.getPreOrderFromSSAndDispatch();
 
     const token = this.cookieService.get('token');
     this.store.dispatch(authActions.getUser({ token }));

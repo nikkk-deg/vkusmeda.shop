@@ -15,7 +15,7 @@
   </button>
   }@else {
   <div class="user-info__standart-icon">
-    {{ user()?.name ? user()?.name : user()?.email }}
+    {{ user()?.name ? user()?.name : user()?.email?.slice(0, 10) + "..." }}
   </div>
   }
 </div>

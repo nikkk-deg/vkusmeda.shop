@@ -4,9 +4,8 @@ import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs';
-import { productsActions } from '../../data/store/product/product.actions';
-import { selectProducts } from '../../data/store/product/product.selectors';
 import { ProductInterface } from '../../data/interfaces/product.interface';
+import { selectProducts } from '../../data/store/product/product.selectors';
 
 @Component({
   selector: 'app-product',
@@ -39,17 +38,4 @@ export class ProductComponent implements OnInit {
       this.productSlug.set(params.get('productSlug'));
     });
   }
-
-  // loadProductDetails() {
-  //   this.titleService.setTitle(`Купить ${this.product()?.titleRu} онлайн`);
-  //   //@ts-ignore
-  //   this.metaService.updateTag({
-  //     name: 'description',
-  //     content: this.product()?.microCaption,
-  //   });
-  //   this.metaService.updateTag({
-  //     name: 'keywords',
-  //     content: product.keywords.join(', '),
-  //   });
-  // }
 }

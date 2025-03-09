@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { BasketService } from '../../data/services/basket.service';
 import { authActions } from '../../data/store/auth/auth.actions';
 import { selectBasket, selectUser } from '../../data/store/auth/auth.selectors';
+import { ordersActions } from '../../data/store/order/order.actions';
 
 @Component({
   selector: 'app-add-to-basket',
@@ -26,7 +27,6 @@ export class AddToBasketComponent {
   constructor() {
     effect(() => {
       const index = this.basket()?.products.findIndex(
-        //@ts-ignore
         (item) => item.productId._id === this.product._id
       );
       //@ts-ignore
@@ -44,6 +44,17 @@ export class AddToBasketComponent {
 
   addToBasket(count: number) {
     this.basketService.changeToBasket(this.product, count);
+    this.store.dispatch(
+      ordersActions.updatePreOrder({ product: this.product, count })
+    );
     this.store.dispatch(authActions.getUserSuccess({ user: this.user() }));
+  }
+
+  addToBasketForFirstTime() {
+    this.store.dispatch(
+      ordersActions.setPreOrder({
+        product: { productId: this.product, jars: 1 },
+      })
+    );
   }
 }

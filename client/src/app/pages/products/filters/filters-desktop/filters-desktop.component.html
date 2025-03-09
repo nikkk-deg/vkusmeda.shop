@@ -13,12 +13,21 @@
   <ul class="categories__filters-desktop">
     <div class="title-categories__filters-desktop">По сортам:</div>
     @for (item of categories(); track $index) {
-    <li (click)="changeCategory(item)" class="item-list__filters-product-page">
+    <li class="item-list__filters-product-page">
       <label class="custom-checkbox">
-        <input [checked]="isChecked(item)" type="checkbox" />
+        <input
+          (click)="changeCategory(item)"
+          [checked]="isChecked(item)"
+          type="checkbox"
+        />
         <span class="checkbox-icon"></span>
       </label>
-      <div class="category__filters-product-page">{{ item }}</div>
+      <div
+        (click)="changeCategory(item)"
+        class="category__filters-product-page"
+      >
+        {{ item }}
+      </div>
     </li>
     }
   </ul>

@@ -1,1 +1,139 @@
-<p>basket works!</p>
+@if(!basket() || basket()?.products?.length === 0){
+<div class="wrapper-not-basket__basket">
+  <div class="title-not-basket__basket">Ваша корзина пуста :(</div>
+  <img
+    src="/assets/images/bakset.png"
+    alt="icon basket"
+    class="img-not-basket__basket"
+    width="650px"
+    class="basket-image__basket"
+  />
+  <img
+    src="/assets/images/ellips3.png"
+    alt="ellips pict"
+    width="1468px"
+    class="ellips-not-basket__basket"
+  />
+  <div class="caption-not-basket__basket">Давайте ее наполним!</div>
+
+  <a [routerLink]="['/products']" class="btn-not-basket__basket">К покупкам</a>
+</div>
+}@else {
+<div class="wrapper__basket">
+  <div class="wrapper-products__basket">
+    <div class="link-title__basket">КОРЗИНА</div>
+    <button (click)="deleteChecked()" class="delete-checked__basket">
+      Удалить выбранное
+    </button>
+
+    <div class="basket-header__basket">
+      <div class=""></div>
+      <p>Товар</p>
+      <p>Цена</p>
+      <p>Количество</p>
+      <p>Сумма</p>
+    </div>
+
+    <div class="basket-products__basket">
+      @for (item of basket()?.products; track $index) {
+      <div class="basket-card__basket">
+        <label class="custom-checkbox">
+          <input
+            [checked]="isChecked(item)"
+            (click)="checkProduct(item)"
+            type="checkbox"
+          />
+          <span class="checkbox-icon"></span>
+        </label>
+
+        <div class="wrapper-product-total__basket">
+          <img
+            width="90px"
+            height="80px"
+            class="img-product__basket"
+            [alt]="'photo' + item.productId.titleEn"
+            [src]="'/assets/images/honey/' + item.productId.photos[0]"
+          />
+          <p class="title-product__basket">{{ item.productId.titleRu }}</p>
+          <p class="volume-product__basket">1 л</p>
+        </div>
+
+        <div class="price-wrapper__basket">
+          <p class="price-product__basket">
+            {{ item.productId.price.toLocaleString("ru-RU") }}
+          </p>
+          <img
+            src="/assets/svg/rubble-icon.svg"
+            alt="rubble-icon"
+            width="17px"
+            class="rubble-icon__basket"
+          />
+        </div>
+
+        <app-add-to-basket [product]="item.productId"></app-add-to-basket>
+
+        <div class="price-wrapper__basket">
+          <div class="total-for-mobile-title__basket">Итого:</div>
+          <div class="total-price__basket">
+            {{ (item.productId.price * item.jars).toLocaleString("ru-RU") }}
+          </div>
+          <img
+            src="/assets/svg/rubble-icon.svg"
+            alt="rubble-icon"
+            width="17px"
+            class="rubble-icon__basket"
+          />
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="wrapper-total__basket">
+    <p class="title-total__basket">Сумма заказа</p>
+    <div class="total-quantity__basket">{{ totalCount() }} прод.</div>
+    <div class="total-price-total__basket">
+      <div class="">{{ totalPrice().toLocaleString("ru-RU") }}</div>
+      <img
+        src="/assets/svg/rubble-icon.svg"
+        alt="rubble-icon"
+        width="17px"
+        class="rubble-icon__basket"
+      />
+    </div>
+    <div class="total-discont-title__basket">Скидка Вкус Мёда</div>
+    <div class="total-discont-price__basket">
+      <div class="">{{ totalPrice().toLocaleString("ru-RU") }}</div>
+      <img
+        src="/assets/svg/rubble-red-icon.svg"
+        alt="rubble-icon"
+        width="17px"
+        class="rubble-icon__basket"
+      />
+    </div>
+    <div class="total-summary-title__basket">Итого</div>
+    <div class="total-summary-price__basket">
+      <div>0</div>
+      <img
+        src="/assets/svg/rubble-icon.svg"
+        alt="rubble-icon"
+        width="24px"
+        class="rubble-icon__basket red-rubble"
+      />
+    </div>
+    <div class="total-caption-order__basket">
+      Без возможной стоимости доставки
+    </div>
+
+    @if(totalCount() > 0){
+    <a class="btn-get-order__basket" [routerLink]="'/make-order'"
+      >К оформлению</a
+    >
+    }@else {
+    <div class="btn-get-order__basket btn-not-selected_basket">
+      К оформлению
+    </div>
+    }
+  </div>
+</div>
+}

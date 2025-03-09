@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { productsActions } from '../store/product/product.actions';
 import { selectFilters } from '../store/product/product.selectors';
+import { productsActions } from '../store/product/product.actions';
 
 @Injectable({
   providedIn: 'root',

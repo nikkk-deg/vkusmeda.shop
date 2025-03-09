@@ -1,4 +1,4 @@
-export interface ProductInterfaceForBasket {
+export interface ProductInterfaceForOrder {
   productId: {
     _id: string;
     titleEn: string;
@@ -16,10 +16,4 @@ export interface ProductInterfaceForBasket {
 interface Feature {
   feature: string;
   value: string;
-}
-
-export interface BasketInterface {
-  _id: string;
-  __v: number;
-  products: ProductInterfaceForBasket[];
 }
