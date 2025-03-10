@@ -1,0 +1,15 @@
+@if (!user()) {
+<img
+  src="/assets/images/ellips3.png"
+  alt="photo of ellips"
+  class="ellips__orders"
+/>
+<img src="/assets/images/bee.png" alt="pict of bee" class="bee-image__orders" />
+<div class="wrapper-text__orders">
+  <div class="not-orders-text__orders">Упс! Не смогли найти Ваши заказы</div>
+  <div class="login-text__orders">Войдите в аккаунт чтобы посмотреть</div>
+  <div class="login-btn__orders" [routerLink]="['/auth']">Войти</div>
+</div>
+} @else {
+<div class="">123</div>
+}

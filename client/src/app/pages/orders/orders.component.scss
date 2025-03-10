@@ -1,0 +1,48 @@
+:host {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 66px;
+}
+
+.ellips__orders {
+  position: absolute;
+  width: 2000px;
+  top: -400px;
+  z-index: -10;
+}
+.bee-image__orders {
+  width: 604px;
+}
+
+.not-orders-text__orders {
+  font-weight: 500;
+  font-size: 64px;
+  margin-top: 150px;
+}
+
+.login-text__orders {
+  font-weight: 200;
+  font-size: 32px;
+  margin-top: 36px;
+}
+
+.login-btn__orders {
+  margin-top: 36px;
+  text-decoration: none;
+  color: black;
+  width: 168px;
+  height: 66px;
+  border-radius: 32px;
+  background: var(--yellow-color);
+  font-size: 32px;
+  font-weight: 100;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--dark-yellow-color);
+  }
+}

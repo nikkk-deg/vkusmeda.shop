@@ -16,6 +16,7 @@ import { OrderFeature } from './data/store/order/order.reducer';
 import { OrderEffects } from './data/store/order/order.effects';
 import { OrderComponent } from './pages/order/order.component';
 import { AboutComponent } from './pages/about/about.component';
+import { OrdersComponent } from './pages/orders/orders.component';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,7 @@ export const routes: Routes = [
       { path: 'basket', component: BasketComponent },
       { path: 'make-order', component: OrderComponent },
       { path: 'about', component: AboutComponent },
+      { path: 'orders', component: OrdersComponent },
       { path: 'product/:productId/:productSlug', component: ProductComponent },
     ],
   },
