@@ -12,9 +12,9 @@ import { BasketComponent } from './pages/basket/basket.component';
 import { ProductFeature } from './data/store/product/product.reducer';
 import { ProductEffects } from './data/store/product/product.effects';
 import { ProductComponent } from './pages/product/product.component';
-import { MakeOrderComponent } from './pages/make-order/make-order.component';
 import { OrderFeature } from './data/store/order/order.reducer';
 import { OrderEffects } from './data/store/order/order.effects';
+import { OrderComponent } from './pages/order/order.component';
 
 export const routes: Routes = [
   {
@@ -33,7 +33,7 @@ export const routes: Routes = [
       { path: '', component: MainPageComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'basket', component: BasketComponent },
-      { path: 'make-order', component: MakeOrderComponent },
+      { path: 'make-order', component: OrderComponent },
       { path: 'product/:productId/:productSlug', component: ProductComponent },
     ],
   },

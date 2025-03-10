@@ -1,15 +1,16 @@
 import { JsonPipe } from '@angular/common';
 import { Component, effect, inject, OnInit, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs';
 import { ProductInterface } from '../../data/interfaces/product.interface';
 import { selectProducts } from '../../data/store/product/product.selectors';
+import { AddToBasketComponent } from '../../common-ui/add-to-basket/add-to-basket.component';
 
 @Component({
   selector: 'app-product',
-  imports: [JsonPipe],
+  imports: [RouterLink, AddToBasketComponent, JsonPipe],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
 })
@@ -21,6 +22,7 @@ export class ProductComponent implements OnInit {
   store = inject(Store);
   metaService = inject(Meta);
   product = signal<ProductInterface | null>(null);
+  productMainPhoto = signal('');
 
   constructor() {
     effect(() => {
@@ -30,6 +32,10 @@ export class ProductComponent implements OnInit {
           .filter((item) => item._id === this.productId())[0]
       );
     });
+
+    effect(() => {
+      this.productMainPhoto.set(this.product()!.photos[0]);
+    });
   }
 
   ngOnInit() {
@@ -37,5 +43,9 @@ export class ProductComponent implements OnInit {
       this.productId.set(params.get('productId'));
       this.productSlug.set(params.get('productSlug'));
     });
+  }
+
+  changeMainPhoto(photo: string) {
+    this.productMainPhoto.set(photo);
   }
 }

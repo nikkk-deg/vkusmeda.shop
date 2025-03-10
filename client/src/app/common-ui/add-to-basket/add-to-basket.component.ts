@@ -24,6 +24,8 @@ export class AddToBasketComponent {
   //@ts-ignore
   @Input() product;
 
+  @Input() isBig?: boolean;
+
   constructor() {
     effect(() => {
       const index = this.basket()?.products.findIndex(

@@ -47,13 +47,18 @@
         </label>
 
         <div class="wrapper-product-total__basket">
-          <img
-            width="90px"
-            height="80px"
-            class="img-product__basket"
-            [alt]="'photo' + item.productId.titleEn"
-            [src]="'/assets/images/honey/' + item.productId.photos[0]"
-          />
+          <a
+            [routerLink]="
+              '/product/' + item.productId._id + '/' + item.productId.titleEn
+            "
+          >
+            <img
+              width="90px"
+              height="80px"
+              class="img-product__basket"
+              [alt]="'photo' + item.productId.titleEn"
+              [src]="'/assets/images/honey/' + item.productId.photos[0]"
+          /></a>
           <p class="title-product__basket">{{ item.productId.titleRu }}</p>
           <p class="volume-product__basket">1 л</p>
         </div>

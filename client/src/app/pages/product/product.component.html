@@ -1,7 +1,77 @@
-<p>product works!</p>
+<div class class="wrapper-photos__product">
+  <div class="wrapper-main-photo__product">
+    <img
+      [src]="'/assets/images/honey/' + productMainPhoto()"
+      [alt]="'photo ' + product()!.titleEn"
+      width="450px"
+    />
+  </div>
 
-<pre>
-  {{ productId() }}
-  {{ productSlug() }}
-  {{ product() | json }}
-</pre>
+  <div class="wrapper-second-photo__product">
+    <div
+      class="second-photo__product"
+      (click)="changeMainPhoto(product()!.photos[0])"
+    >
+      <img
+        [src]="'/assets/images/honey/' + product()!.photos[0]"
+        [alt]="'first photo ' + product()!.titleEn"
+        width="100px"
+      />
+    </div>
+    <div
+      class="second-photo__product"
+      (click)="changeMainPhoto(product()!.photos[1])"
+    >
+      <img
+        [src]="'/assets/images/honey/' + product()!.photos[1]"
+        [alt]="'second photo ' + product()!.titleEn"
+        width="100px"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="wrapper-info__product">
+  <div class="links__product">
+    <a [routerLink]="['/products']" class="link-to-products__products"
+      >ТОВАРЫ /</a
+    >
+    <span class="product-title__products">
+      {{ product()!.titleRu.toUpperCase() }}
+    </span>
+  </div>
+
+  <h1 class="header__product">{{ product()!.titleRu }}</h1>
+
+  <p class="mini-caption__product">
+    {{ product()!.miniCaption }}
+  </p>
+
+  <div class="price__wrapper__product">
+    <div class="price__product">
+      <span>
+        {{ product()!.price.toLocaleString("ru-RU") }}
+      </span>
+      <img
+        src="/assets/svg/rubble-icon.svg"
+        alt="rubble-icon"
+        width="40px"
+        class="rubble-icon__basket"
+      />
+    </div>
+
+    <app-add-to-basket [product]="product()" [isBig]="true"></app-add-to-basket>
+  </div>
+
+  <div class="caption__product">
+    <div class="caption-title__product">Описание продукта:</div>
+    @for (item of product()!.caption; track $index) {
+    <div class="property__product">
+      <span class="key-property__product"> {{ item.feature }}: </span>
+      <span class="value-property__product">
+        {{ item.value.toLocaleLowerCase() }}
+      </span>
+    </div>
+    }
+  </div>
+</div>
