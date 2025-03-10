@@ -1,0 +1,74 @@
+<img class="photo__about" src="/assets/images/me.jpg" alt="owner's photo" />
+
+<div class="info__about">
+  <div class="hello-text__about">
+    Привет! Меня зовут Дегтярев Никита, я из Ростова-на-Дону
+  </div>
+  <div class="title-caption__about">Этот проект:</div>
+  <div class="caption__about">
+    Это не просто сайт, а моя демонстрация профессиональных навыков и опыта. Его
+    цель — объединить изученные технологии в одном портфолио, показать мои
+    умения в программировании, проектировании и дизайне
+  </div>
+
+  <div class="tech-list-wrapper__about">
+    Технологии, используемые в проекте:
+    <ul class="tech-list__aboute">
+      @for (item of techList; track $index) {
+      <li class="item-list__about">
+        <img
+          [src]="item.pict"
+          [alt]="'icon' + item.pict.slice(10, -4)"
+          width="22px"
+        />
+        <div class="text-icon__about">
+          {{ item.text }}
+        </div>
+      </li>
+      }
+    </ul>
+  </div>
+
+  <div class="github-text__about">
+    Весь код проекта доступен на моём
+    <a href="https://github.com/nikkk-deg"> GitHub</a>
+  </div>
+
+  <div class="figma-text__about">
+    Дизайн сайта я разработал сам в Figma. Исходники можно посмотреть
+    <a
+      href="https://www.figma.com/design/vhFjyDJlkoVmRN7ZmcaK3O/vkusmeda.shop?node-id=0-1&t=ecCvx1HwAt8InNJD-1"
+      >здесь</a
+    >
+  </div>
+
+  <div class="attention-title__about">Важно!</div>
+  <div class="attention-text__about">
+    Этот сайт не преследует коммерческих целей, а все заказы, размещённые на
+    сайте, являются тестовыми. Вы получите уведомление на почту, подтверждающее
+    это
+  </div>
+
+  <div class="question-title__about">
+    Если у вас есть вопросы или предложения, свяжитесь со мной:
+  </div>
+  <div class="contacts__about">
+    <div class="contact-item__about">
+      <a href="https://t.me/nikkk_deg" class="telegram-contact__about">
+        <img src="/assets/svg/telegram.svg" alt="telegram icon" width="22px" />
+        <div>&#64;nikkk_deg</div>
+      </a>
+    </div>
+    <div>
+      <a
+        href="mailto:nikita.deki4@gmail.com?subject=Письмо%20о%20сотрудничестве"
+        class="telegram-contact__about"
+      >
+        <img src="/assets/svg/mail-icon.svg" alt="telegram icon" width="22px" />
+        <span>nikita.deki4&#64;gmail.com</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="thanks__about">Спасибо за внимание! Буду рад сотрудничеству.</div>
+</div>

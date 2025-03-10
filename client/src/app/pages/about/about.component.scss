@@ -1,0 +1,137 @@
+:host {
+  padding-top: 94px;
+  display: grid;
+  grid-template-columns: 590px 1fr;
+  gap: 80px;
+}
+
+.photo__about {
+  width: 588px;
+}
+
+.hello-text__about {
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.tech-list-wrapper__about,
+.title-caption__about {
+  margin-top: 27px;
+
+  font-weight: 300;
+  font-size: 14px;
+}
+
+.item-list__about {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 25px 1fr;
+  align-items: center;
+}
+
+.caption__about {
+  margin-top: 12px;
+
+  font-weight: 200;
+  font-size: 14px;
+}
+
+.tech-list__aboute {
+  margin-top: 18px;
+
+  list-style: none;
+  font-weight: 200;
+  font-size: 14px;
+}
+
+.figma-text__about,
+.github-text__about {
+  font-weight: 200;
+  font-size: 14px;
+  margin-top: 14px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  text-decoration: underline;
+  font-weight: 300;
+}
+
+.attention-title__about {
+  font-weight: 300;
+  font-size: 36px;
+  margin-top: 60px;
+}
+
+.attention-text__about {
+  margin-top: 16px;
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.question-title__about,
+.thanks__about {
+  font-weight: 200;
+  font-size: 14px;
+}
+.question-title__about {
+  margin-top: 60px;
+}
+
+.telegram-contact__about {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 25px 1fr;
+}
+
+.thanks__about {
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 1050px) {
+  :host {
+    grid-template-columns: 588px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 460px) {
+  :host {
+    padding-top: 20px;
+    grid-template-columns: 400px;
+    justify-content: center;
+  }
+
+  .photo__about {
+    width: 400px;
+  }
+
+  .info__about {
+    margin-top: -40px;
+  }
+}
+
+@media (max-width: 420px) {
+  :host {
+    padding-top: 20px;
+    grid-template-columns: 360px;
+    justify-content: center;
+  }
+
+  .photo__about {
+    width: 360px;
+  }
+}
+@media (max-width: 360px) {
+  :host {
+    padding-top: 20px;
+    grid-template-columns: 300px;
+    justify-content: center;
+  }
+
+  .photo__about {
+    width: 300px;
+  }
+}
