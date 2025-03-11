@@ -49,3 +49,10 @@ export const selectBasket = createSelector(
     return state.basket;
   }
 );
+
+export const selectOrders = createSelector(
+  authFeature.selectAuthFeatureState,
+  (state: AuthState) => {
+    return state.orders;
+  }
+);

@@ -62,10 +62,9 @@ export class OrdersService {
   async createOrder(payload: CreateOrderDto) {
     const productIds = payload.products.map((product) => product.productId);
 
-    // 1. Ищем все товары по `_id`
     const existingProducts = await this.productModel.find(
       { _id: { $in: productIds } },
-      { _id: 1, titleRu: 1, price: 1 }, // Берём только нужные поля
+      { _id: 1, titleRu: 1, price: 1 },
     );
 
     if (existingProducts.length !== productIds.length) {
@@ -75,13 +74,12 @@ export class OrdersService {
     this.addNewUser(payload.email);
     this.removeOrderFromBasket(payload);
 
-    // 2. Объединяем данные товаров (добавляем `titleRu` и `price` в `payload.products`)
     const enrichedProducts = payload.products
       .map((product) => {
         const foundProduct = existingProducts.find(
           (p) => p._id.toString() === product.productId.toString(),
         );
-        if (!foundProduct) return null; // На всякий случай, но сюда не должно попасть
+        if (!foundProduct) return null;
 
         return {
           productId: product.productId,
@@ -90,18 +88,15 @@ export class OrdersService {
           jars: product.jars,
         };
       })
-      .filter(Boolean); // Убираем возможные `null`
+      .filter(Boolean);
 
-    // 3. Создаём заказ с дополнительными данными
     const newOrder = await this.orderModel.create({
       ...payload,
       isActive: 'active',
-      products: enrichedProducts, // Теперь товары имеют `titleRu` и `price`
+      products: enrichedProducts,
     });
 
     await newOrder.save();
-    //уу
-    //4-0 узнаем имя и фамилию пользлвателя или отправляем пользователь
 
     const user = await this.userModel.findOne({ email: payload.email });
 
@@ -114,7 +109,6 @@ export class OrdersService {
             ? user.surname.charAt(0).toUpperCase() + user.surname.slice(1)
             : 'покупатель';
 
-    // 4. Отправляем email с полными данными о товарах
     this.sendOrderAnEmail(payload.email, enrichedProducts, name);
 
     return newOrder;

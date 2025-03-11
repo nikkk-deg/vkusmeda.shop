@@ -2,6 +2,7 @@ import { BasketInterface } from './../../interfaces/basket.interface';
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { UserInterface } from '../../interfaces/user.interface';
 import { authActions } from './auth.actions';
+import { OrdersInterface } from '../../interfaces/orders.interface';
 
 export interface AuthState {
   user: UserInterface | null;
@@ -15,6 +16,9 @@ export interface AuthState {
   isBasketError: boolean;
   basket: BasketInterface | null;
   userId: string | null;
+  orders: OrdersInterface[] | null;
+  isLoadingOrders: boolean;
+  isErrorOrders: boolean;
 }
 
 export const initialState: AuthState = {
@@ -29,6 +33,9 @@ export const initialState: AuthState = {
   isBasketLoading: false,
   isBasketError: false,
   basket: null,
+  orders: null,
+  isLoadingOrders: false,
+  isErrorOrders: false,
 };
 
 export const authFeature = createFeature({
@@ -70,6 +77,32 @@ export const authFeature = createFeature({
       return {
         ...state,
         basket: payload.basket,
+      };
+    }),
+
+    on(authActions.setOrders, (state, payload) => {
+      return {
+        ...state,
+        orders: payload.orders,
+      };
+    }),
+    on(authActions.loadOrders, (state) => {
+      return {
+        ...state,
+        isLoadingOrders: true,
+      };
+    }),
+    on(authActions.errorOrders, (state) => {
+      return {
+        ...state,
+        isErrorOrders: true,
+      };
+    }),
+    on(authActions.completeOrders, (state) => {
+      return {
+        ...state,
+        isLoadingOrders: false,
+        isErrorOrders: false,
       };
     })
   ),

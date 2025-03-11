@@ -1,15 +1,97 @@
 @if (!user()) {
-<img
-  src="/assets/images/ellips3.png"
-  alt="photo of ellips"
-  class="ellips__orders"
-/>
-<img src="/assets/images/bee.png" alt="pict of bee" class="bee-image__orders" />
-<div class="wrapper-text__orders">
-  <div class="not-orders-text__orders">Упс! Не смогли найти Ваши заказы</div>
-  <div class="login-text__orders">Войдите в аккаунт чтобы посмотреть</div>
-  <div class="login-btn__orders" [routerLink]="['/auth']">Войти</div>
+<div class="wrapper-not-orders__orders">
+  <img
+    src="/assets/images/ellips3.png"
+    alt="photo of ellips"
+    class="ellips__orders"
+  />
+  <img
+    src="/assets/images/bee.png"
+    alt="pict of bee"
+    class="bee-image__orders"
+  />
+  <div class="wrapper-text__orders">
+    <div class="not-orders-text__orders">Упс! Не смогли найти Ваши заказы</div>
+    <div class="login-text__orders">Войдите в аккаунт чтобы посмотреть</div>
+    <div class="login-btn__orders" [routerLink]="['/auth']">Войти</div>
+  </div>
 </div>
-} @else {
-<div class="">123</div>
+
+} @else if (!orders()) {
+<div class="wrapper-not-orders__orders">
+  <img
+    src="/assets/images/ellips3.png"
+    alt="photo of ellips"
+    class="ellips__orders"
+  />
+  <img
+    src="/assets/images/bee.png"
+    alt="pict of bee"
+    class="bee-image__orders"
+  />
+  <div class="wrapper-text__orders">
+    <div class="not-orders-text__orders">У вас ещё нет истории заказов</div>
+    <div class="login-text__orders">Давайте творить историю вместе!</div>
+    <div class="to-products-btn__orders" [routerLink]="['/products']">
+      К покупкам
+    </div>
+  </div>
+</div>
+
+}@else{
+<div class="wrapper-have-orders__orders">
+  <div class="wrapper__orders">
+    <div class="title__orders"></div>
+    @for (item of orders(); track $index) {
+    <div [routerLink]="'/order/' + item._id" class="order__order">
+      <div class="grid-left__orders">
+        <div
+          [class]="
+            item.isActive === 'active'
+              ? 'status-active__order'
+              : 'status-cancel__order'
+          "
+        >
+          {{ item.isActive === "active" ? "Активен" : "Отменен" }}
+        </div>
+        <div class="data__orders">
+          {{ formateDate(item.createdAt) }}
+        </div>
+        <div class="data__orders">
+          {{ formateTime(item.createdAt) }}
+        </div>
+      </div>
+      <div class="grid-right__orders">
+        <div class="order-number__order">
+          № {{ item._id.slice(-7).toUpperCase() }}
+        </div>
+      </div>
+      <div class="grid-left-second__orders">
+        <div class="photos-of-order__orders">
+          @for (item of item.products; track $index) {
+          <img
+            width="90px"
+            [src]="'/assets/images/honey/' + item.productId.photos[0]"
+            [alt]="'photo' + item.productId.titleEn"
+          />
+          }
+        </div>
+      </div>
+      <div class="grid-right-second__orders">
+        <div class="productCount">{{ getTotalJars(item.products) }} прод.</div>
+
+        <div class="order-price__orders">
+          <div class="price-title__order">0</div>
+          <img
+            src="/assets/svg/rubble-icon.svg"
+            alt="rubble-icon"
+            width="25px"
+            class="rubble-icon__basket price-icon__order"
+          />
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>
 }

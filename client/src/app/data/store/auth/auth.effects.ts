@@ -6,12 +6,14 @@ import { authActions } from './auth.actions';
 import { BasketService } from '../../services/basket.service';
 import { Store } from '@ngrx/store';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { OrderService } from '../../services/order.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthEffects {
   authService = inject(AuthService);
+  orderService = inject(OrderService);
   basketService = inject(BasketService);
   actions$ = inject(Actions);
   store = inject(Store);
@@ -56,6 +58,22 @@ export class AuthEffects {
           //@ts-ignore
           basket: res,
         });
+      }),
+      catchError((err) => {
+        console.error(err);
+        return EMPTY;
+      })
+    );
+  });
+
+  getOrders$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(authActions.getOrders),
+      switchMap(() => {
+        return this.orderService.getOrders();
+      }),
+      map((res) => {
+        return authActions.setOrders({ orders: res });
       }),
       catchError((err) => {
         console.error(err);

@@ -1,29 +1,37 @@
 import { Component, effect, inject, signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { take } from 'rxjs';
+import { selectProducts } from '../../data/store/product/product.selectors';
+import { OrdersInterface } from '../../data/interfaces/orders.interface';
 import { Store } from '@ngrx/store';
-import { selectPreOrder } from '../../data/store/order/order.selectors';
-import { FormsModule } from '@angular/forms';
+import { selectOrders } from '../../data/store/auth/auth.selectors';
 
 @Component({
   selector: 'app-order',
-  imports: [FormsModule],
+  imports: [],
   templateUrl: './order.component.html',
   styleUrl: './order.component.scss',
 })
 export class OrderComponent {
+  route = inject(ActivatedRoute);
+  orderId = signal<string | null>(null);
+  order = signal<OrdersInterface | null>(null);
   store = inject(Store);
-  order = this.store.selectSignal(selectPreOrder);
-  totalPrice = signal(0);
-  username = '';
 
   constructor() {
-    console.log(this.username);
     effect(() => {
-      this.totalPrice.set(
-        this.order().reduce(
-          (acc, item) => acc + item.jars * item.productId.price,
-          0
-        )
+      this.order.set(
+        //@ts-ignore
+        this.store
+          .selectSignal(selectOrders)()
+          .filter((item) => item._id === this.orderId())[0]
       );
+    });
+  }
+
+  ngOnInit() {
+    this.route.paramMap.pipe(take(1)).subscribe((params) => {
+      this.orderId.set(params.get('orderId'));
     });
   }
 }
