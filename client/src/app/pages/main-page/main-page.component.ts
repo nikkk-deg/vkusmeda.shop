@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss',
 })
