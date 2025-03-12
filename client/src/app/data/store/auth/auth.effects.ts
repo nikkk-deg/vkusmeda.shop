@@ -75,6 +75,10 @@ export class AuthEffects {
         return this.orderService.getOrders();
       }),
       map((res) => {
+        res.sort((a, b) => {
+          //@ts-ignore
+          return new Date(b.createdAt) - new Date(a.createdAt);
+        });
         return authActions.setOrders({ orders: res });
       }),
       catchError((err) => {
