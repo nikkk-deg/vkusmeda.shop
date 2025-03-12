@@ -1,4 +1,11 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  effect,
+  inject,
+  signal,
+} from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { take } from 'rxjs';
 import { selectProducts } from '../../data/store/product/product.selectors';
@@ -7,6 +14,8 @@ import { Store } from '@ngrx/store';
 import { selectOrders } from '../../data/store/auth/auth.selectors';
 import { JsonPipe } from '@angular/common';
 import { OrderService } from '../../data/services/order.service';
+import { authActions } from '../../data/store/auth/auth.actions';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-order',
@@ -24,6 +33,7 @@ export class OrderComponent {
   totalCount = signal(0);
   totalPrice = signal(0);
   router = inject(Router);
+  cookieService = inject(CookieService);
 
   constructor() {
     effect(() => {
@@ -63,6 +73,8 @@ export class OrderComponent {
 
   cancelOrder() {
     this.orderService.cancelOrder(this.order()!._id);
+    const token = this.cookieService.get('token');
+    this.store.dispatch(authActions.getUser({ token }));
   }
 
   formateDate(dateString: string) {

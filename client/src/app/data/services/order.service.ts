@@ -22,32 +22,35 @@ export class OrderService {
   user = this.store.selectSignal(selectUser);
 
   getOrders() {
-    this.store.dispatch(authActions.loadOrders());
-    const headers = {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${this.cookieService.get('token')}`,
-      }),
-    };
-
-    const body = {
-      email: this.user()?.email,
-    };
-    return this.#http
-      .post<OrdersInterface[]>(`${this.apiUrl}getOrders`, body, headers)
-      .pipe(
-        take(1),
-        tap((res) => {
-          this.store.dispatch(authActions.completeOrders());
+    if (this.user()) {
+      this.store.dispatch(authActions.loadOrders());
+      const headers = {
+        headers: new HttpHeaders({
+          Authorization: `Bearer ${this.cookieService.get('token')}`,
         }),
-        catchError((error) => {
-          this.store.dispatch(authActions.errorOrders());
-          setTimeout(() => {
+      };
+
+      const body = {
+        email: this.user()?.email,
+      };
+      return this.#http
+        .post<OrdersInterface[]>(`${this.apiUrl}getOrders`, body, headers)
+        .pipe(
+          take(1),
+          tap((res) => {
             this.store.dispatch(authActions.completeOrders());
-          }, 1000);
-          console.error(`Error in get orders request - \n ${error}`);
-          return EMPTY;
-        })
-      );
+          }),
+          catchError((error) => {
+            this.store.dispatch(authActions.errorOrders());
+            setTimeout(() => {
+              this.store.dispatch(authActions.completeOrders());
+            }, 1000);
+            console.error(`Error in get orders request - \n ${error}`);
+            return EMPTY;
+          })
+        );
+    }
+    return EMPTY;
   }
 
   cancelOrder(id: string) {

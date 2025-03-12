@@ -42,10 +42,6 @@ export class FiltersMobileComponent {
     });
   }
 
-  setIsVisible() {
-    this.isVisible.set(!this.isVisible());
-  }
-
   changeCategory(category: string) {
     this.filtersService.changeCategoryAndDispatch(category);
   }
@@ -56,5 +52,9 @@ export class FiltersMobileComponent {
 
   clearFilters() {
     this.filtersService.resetFilters();
+  }
+
+  setIsVisible() {
+    this.isVisible.set(!this.isVisible());
   }
 }
