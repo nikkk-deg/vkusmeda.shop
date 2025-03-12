@@ -60,6 +60,7 @@ export class AuthService {
         if (currentLink.includes('auth')) {
           this.router.navigate(['']);
         }
+        sessionStorage.clear();
       }),
 
       catchError((error) => {
@@ -80,5 +81,6 @@ export class AuthService {
   logout() {
     this.cookieService.deleteAll();
     this.store.dispatch(authActions.logoutUser());
+    sessionStorage.clear();
   }
 }

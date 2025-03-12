@@ -17,7 +17,7 @@ import { authActions } from '../../data/store/auth/auth.actions';
 
 @Component({
   selector: 'app-basket',
-  imports: [RouterLink, AddToBasketComponent],
+  imports: [RouterLink, AddToBasketComponent, JsonPipe],
   templateUrl: './basket.component.html',
   styleUrl: './basket.component.scss',
 })
