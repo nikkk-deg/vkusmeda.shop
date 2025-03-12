@@ -1,7 +1,7 @@
 import { JsonPipe } from '@angular/common';
 import { Component, effect, inject, OnInit, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { take } from 'rxjs';
 import { ProductInterface } from '../../data/interfaces/product.interface';
@@ -23,6 +23,7 @@ export class ProductComponent implements OnInit {
   metaService = inject(Meta);
   product = signal<ProductInterface | null>(null);
   productMainPhoto = signal('');
+  router = inject(Router);
 
   constructor() {
     effect(() => {
@@ -31,6 +32,9 @@ export class ProductComponent implements OnInit {
           .selectSignal(selectProducts)()
           .filter((item) => item._id === this.productId())[0]
       );
+      if (!this.product()) {
+        this.router.navigate(['/error']);
+      }
     });
 
     effect(() => {

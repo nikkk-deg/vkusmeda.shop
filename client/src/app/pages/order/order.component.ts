@@ -1,5 +1,5 @@
 import { Component, effect, inject, signal } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { take } from 'rxjs';
 import { selectProducts } from '../../data/store/product/product.selectors';
 import { OrdersInterface } from '../../data/interfaces/orders.interface';
@@ -23,6 +23,7 @@ export class OrderComponent {
   orderService = inject(OrderService);
   totalCount = signal(0);
   totalPrice = signal(0);
+  router = inject(Router);
 
   constructor() {
     effect(() => {
@@ -31,6 +32,9 @@ export class OrderComponent {
           .selectSignal(selectOrders)()!
           .filter((item) => item._id === this.orderId())[0]
       );
+      if (!this.order()) {
+        this.router.navigate(['/error']);
+      }
     });
 
     effect(() => {

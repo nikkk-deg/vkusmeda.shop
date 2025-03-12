@@ -2,8 +2,7 @@
   display: grid;
   justify-items: center;
   align-items: center;
-  height: 90vh;
-  // margin-top: 10px;
+  min-height: 900px;
 }
 
 .wrapper-auth {
@@ -88,9 +87,11 @@ input:not(:placeholder-shown) + label {
 
 @media (max-width: 460px) {
   :host {
+    min-height: 0;
+    height: 100vh;
     display: grid;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    margin-top: 150px;
   }
 
   .btn__auth,
