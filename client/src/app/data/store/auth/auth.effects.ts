@@ -7,6 +7,7 @@ import { BasketService } from '../../services/basket.service';
 import { Store } from '@ngrx/store';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { OrderService } from '../../services/order.service';
+import { selectUser } from './auth.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,7 @@ export class AuthEffects {
   actions$ = inject(Actions);
   store = inject(Store);
   localStorageService = inject(LocalStorageService);
+  user = this.store.selectSignal(selectUser);
 
   getUser$ = createEffect(() => {
     return this.actions$.pipe(
@@ -68,7 +70,7 @@ export class AuthEffects {
 
   getOrders$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(authActions.getOrders),
+      ofType(authActions.getUserSuccess),
       switchMap(() => {
         return this.orderService.getOrders();
       }),

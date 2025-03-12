@@ -21,11 +21,7 @@ export class OrdersComponent {
   constructor() {
     effect(() => {
       this.orders.set(this.store.selectSignal(selectOrders)());
-      console.log(this.orders());
     });
-  }
-  ngOnInit() {
-    this.store.dispatch(authActions.getOrders());
   }
 
   formateDate(dateString: string) {

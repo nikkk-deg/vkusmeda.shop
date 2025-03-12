@@ -49,4 +49,17 @@ export class OrderService {
         })
       );
   }
+
+  cancelOrder(id: string) {
+    const headers = {
+      headers: new HttpHeaders({
+        Authorization: `Bearer ${this.cookieService.get('token')}`,
+      }),
+    };
+
+    return this.#http
+      .get(`${this.apiUrl}cancelOrder/${id}`, headers)
+      .pipe(take(1))
+      .subscribe();
+  }
 }

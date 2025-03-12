@@ -1,2 +1,120 @@
-<p>order works!</p>
-{{ orderId() }}
+<div class="wrapper-info__order">
+  <div class="title-info__order">
+    <span class="link-back__order" [routerLink]="['/orders']">ЗАКАЗЫ</span> /
+    №{{ order()?._id?.slice(-7)!.toUpperCase() }}
+  </div>
+  <div class="date-n-status__order">
+    <div
+      [class]="
+        order()!.isActive === 'active'
+          ? 'status-active__order'
+          : 'status-cancel__order'
+      "
+    >
+      {{ order()!.isActive === "active" ? "Активен" : "Отменен" }}
+    </div>
+    <div class="data__orders">
+      {{ formateDate(order()!.createdAt) }}
+    </div>
+    <div class="data__orders">
+      {{ formateTime(order()!.createdAt) }}
+    </div>
+  </div>
+
+  <div class="order-main__order">
+    <div class="header-order-main__order">
+      <div>Товар</div>
+      <div>Цена</div>
+      <div>Количество</div>
+      <div>Сумма</div>
+    </div>
+    <div class="wrapper-order-main__order">
+      @for (item of order()?.products; track $index) {
+      <div class="order-content__order">
+        <div class="image-n-title-order-content__order">
+          <img
+            [src]="'assets/images/honey/' + item.productId.photos[0]"
+            width="91px"
+            [alt]="'photo of' + item.productId.titleEn"
+          />
+          <div class="product-title__order">
+            {{ item.productId.titleRu }}
+            <span class="product-jars-volume__order">1 л</span>
+          </div>
+        </div>
+        <div class="product-price__order price1__order">
+          {{ item.productId.price }}
+          <img
+            src="/assets/svg/rubble-icon.svg"
+            alt="rubble-icon"
+            width="22px"
+            class="rubble-icon__basket price-icon__order"
+          />
+        </div>
+        <div class="product-jars__order">{{ item.jars }} шт.</div>
+        <div class="total-price__order">
+          {{ (item.jars * item.productId.price).toLocaleString("ru-RU") }}
+          <img
+            src="/assets/svg/rubble-icon.svg"
+            alt="rubble-icon"
+            width="22px"
+            class="rubble-icon__basket price-icon__order"
+          />
+        </div>
+      </div>
+
+      }
+    </div>
+  </div>
+</div>
+
+<div class="wrapper-main__order">
+  <div class="title-main__order">
+    Заказ №{{ order()?._id?.slice(-7)!.toUpperCase() }}
+  </div>
+  <div class="total-prod__order">{{ totalCount() }} прод.</div>
+  <div class="wrapper-total-price__order">
+    <div class="total-price-numbers__order">{{ totalPrice() }}</div>
+
+    <img
+      src="/assets/svg/rubble-icon.svg"
+      alt="rubble-icon"
+      width="17px"
+      class="rubble-icon__basket price-icon__order"
+    />
+  </div>
+
+  <div class="discont-title__order">Скидка Вкус Мёда</div>
+
+  <div class="wrapper-total-price__order discont__order">
+    <div class="total-price-numbers__order">{{ totalPrice() }}</div>
+    <img
+      src="/assets/svg/rubble-red-icon.svg"
+      alt="rubble-icon"
+      width="17px"
+      class="rubble-icon__basket price-icon__order"
+    />
+  </div>
+
+  <div class="delivery-title__order">
+    Доставка: самовывоз из магазина
+    <span class="city__order"> г. Ростов-на-Дону</span>, ул. 5-я Кольцевая, д.17
+  </div>
+
+  <div class="in-total-title__order bold-title__order">Итого</div>
+  <div class="wrapper-total-price__order">
+    <div class="total-price-numbers__order bold-title__order">0</div>
+    <img
+      src="/assets/svg/rubble-icon.svg"
+      alt="rubble-icon"
+      width="22px"
+      class="rubble-icon__basket price-icon__order"
+    />
+  </div>
+
+  @if(order()?.isActive === 'active'){
+  <button (click)="cancelOrder()" class="btn-cancel-order__order">
+    Отменить заказ
+  </button>
+  }
+</div>
