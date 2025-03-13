@@ -17,6 +17,5 @@ export class RememberUserDto {
   surname: string;
 
   @IsOptional()
-  @IsPhoneNumber()
   phoneNumber: string;
 }

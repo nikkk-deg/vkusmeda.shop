@@ -59,12 +59,35 @@ body {
   position: relative;
 }
 
+.custom-checkbox2 span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 50%;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
 .custom-checkbox span::before {
   content: "";
   position: absolute;
   width: 10px;
   height: 10px;
   border-radius: 2px;
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-checkbox2 span::before {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
   background: transparent;
   transition: all 0.3s ease-in-out;
 }

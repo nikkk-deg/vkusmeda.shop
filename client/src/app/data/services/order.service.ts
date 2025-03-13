@@ -8,6 +8,7 @@ import { selectUser } from '../store/auth/auth.selectors';
 import { authActions } from '../store/auth/auth.actions';
 import { OrdersInterface } from '../interfaces/orders.interface';
 import { catchError, EMPTY, take, tap } from 'rxjs';
+import { selectPreOrder } from '../store/order/order.selectors';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,7 @@ export class OrderService {
   cookieService = inject(CookieService);
   store = inject(Store);
   user = this.store.selectSignal(selectUser);
+  preOrder = this.store.selectSignal(selectPreOrder);
 
   getOrders() {
     if (this.user()) {
@@ -62,6 +64,36 @@ export class OrderService {
 
     return this.#http
       .get(`${this.apiUrl}cancelOrder/${id}`, headers)
+      .pipe(take(1))
+      .subscribe();
+  }
+
+  makeOrder(email: string) {
+    const newArray: any[] = [];
+    this.preOrder().forEach((item) => {
+      const object = {
+        productId: item.productId._id,
+        jars: item.jars,
+      };
+      newArray.push(object);
+    });
+
+    const body = {
+      email: email,
+      products: newArray,
+    };
+
+    this.#http.post(`${this.apiUrl}create`, body).pipe(take(1)).subscribe();
+  }
+
+  saveUser(userData: {
+    name: string | null;
+    surname: string | null;
+    email: string | null;
+    phoneNumber: string | null;
+  }) {
+    this.#http
+      .post(`${this.apiUrl}rememberUser`, userData)
       .pipe(take(1))
       .subscribe();
   }

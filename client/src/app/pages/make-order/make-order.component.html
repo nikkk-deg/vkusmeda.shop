@@ -1,5 +1,145 @@
-<div class="wrapper__make-order">
-  <p>make-order works!</p>
-  <p>make-order works!</p>
-  <p>make-order works!</p>
+<div class="wrapper-main-content__make-order">
+  <div class="navigation__make-order">
+    <a class="link-back__make-order" [routerLink]="['/basket']">КОРЗИНА </a
+    ><span> / ОФОРМЛЕНИЕ ЗАКАЗА</span>
+  </div>
+
+  <div class="form__make-order">
+    <form [formGroup]="form">
+      <label class="label__make-order"
+        >Имя<input formControlName="name" type="text"
+      /></label>
+      <label class="label__make-order"
+        >Фамилия<input formControlName="lastName" type="text"
+      /></label>
+      <label class="label__make-order"
+        >Электронная почта<input formControlName="email" type="email"
+      /></label>
+
+      @if (form.controls.email.touched &&
+      form.controls.email.hasError('required')) {
+      <div class="error-email__make-order">Это поле обязательно</div>
+      } @if (form.controls.email.touched &&
+      form.controls.email.hasError('email')) {
+      <div class="error-email__make-order">
+        Неверный формат электронной почты
+      </div>
+      }
+
+      <label class="label__make-order"
+        >Телефон<input formControlName="phoneNumber" type="number"
+      /></label>
+      <label class="custom-checkbox custom-checkbox2 checkbox-form__make-order">
+        <input
+          (click)="changeChecked()"
+          [checked]="checked()"
+          type="checkbox"
+        />
+        <span class="checkbox-icon"></span>Обновить мои данные (старые данные
+        будут удалены)
+      </label>
+
+      <label class="label__make-order">
+        Примечание к заказу<textarea
+          maxlength="400"
+          placeholder="Примечание к Вашему заказу, например, особые пожелания отделу сборки "
+        ></textarea>
+      </label>
+    </form>
+  </div>
+
+  <div class="help-text__make-order">
+    <div class="title-help-text__make-order">
+      Если у Вас возникли сложности при оформлении заказа:
+    </div>
+    <div class="wrapper-send-email__make-order">
+      <div class="circle__make-order"></div>
+      <div class="text-send-email__make-order">
+        отправьте заказ на почту
+        <a class="email-link" href="mailto:example@email.com"
+          >nikita.deki4&#64;gmail.com</a
+        >
+      </div>
+    </div>
+    <div class="wrapper-send-sms__make-order">
+      <div class="circle__make-order"></div>
+      <div class="text-send-sms__make-order">
+        напишите нам в телеграм
+        <a class="telegram-link" href="https://t.me/nikkk_deg"
+          >&#64;nikkk_deg</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrapper-summary-content__make-order">
+  <div class="title-summary__make-order">Ваш заказ</div>
+  <div class="navigation-summary__make-order">
+    <div class="">Товар</div>
+    <div class="">Сумма</div>
+  </div>
+
+  <div class="pre-order-summary__make-order">
+    @for (item of preOrder(); track $index) {
+    <div class="wrapper-product__make-order">
+      <img
+        [src]="'/assets/images/honey/' + item.productId.photos[0]"
+        [alt]="'photo ' + item.productId.titleEn"
+        width="90px"
+      />
+      <div class="product-title__make-order">
+        {{ item.productId.titleRu }}
+        <span class="small-text-__make-order">({{ item.jars }} л)</span>
+      </div>
+
+      <div class="price-product__make-order">
+        <div class="">
+          {{ (item.jars * item.productId.price).toLocaleString("ru-RU") }}
+        </div>
+        <img
+          src="/assets/svg/rubble-icon.svg"
+          alt="rubble-icon"
+          width="17px"
+          class="rubble-icon__basket"
+        />
+      </div>
+    </div>
+    }
+  </div>
+
+  <div class="delivery-text__make-order">
+    Доставка: самовывоз из магазина
+    <span class="not-space__make-order"> г. Ростов-на-Дону </span> ул.
+    <span class="not-space__make-order">5-я Кольцевая д. 17</span>
+  </div>
+
+  <div class="discount-wrapper__make-order">
+    <div class="discount-text__make-order">Скидка Вкус Мёда</div>
+    <div class="price-discount__make-order">
+      <div class="">{{ totalPrice().toLocaleString("ru-RU") }}</div>
+      <img
+        src="/assets/svg/rubble-red-icon.svg"
+        alt="rubble-icon"
+        width="17px"
+        class="rubble-icon__basket"
+      />
+    </div>
+  </div>
+
+  <div class="total-wrapper__make-order">
+    <div class="total-text__make-order">Итого</div>
+    <div class="price-total__make-order">
+      <div class="">0</div>
+      <img
+        src="/assets/svg/rubble-icon.svg"
+        alt="rubble-icon"
+        width="23px"
+        class="rubble-icon__basket"
+      />
+    </div>
+  </div>
+
+  <button (click)="onSubmit()" class="submit-order__make-order" type="submit">
+    Подтвердить покупку
+  </button>
 </div>
