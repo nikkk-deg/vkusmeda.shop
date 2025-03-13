@@ -222,6 +222,7 @@ a {
 }
 
 .submit-order__make-order {
+  cursor: pointer;
   width: 350px;
   white-space: nowrap;
   margin-top: 34px;
@@ -231,6 +232,10 @@ a {
   border: none;
   background: var(--yellow-color);
   border-radius: 32px;
+
+  &:hover {
+    background: var(--dark-yellow-color);
+  }
 }
 
 @media (max-width: 950px) {
