@@ -1,6 +1,6 @@
 <app-filters></app-filters>
 <div class="catalog">
-  @for (product of filteredProducts(); track $index) {
+  @for (product of filteredProducts(); track product._id) {
   <app-product-card [product]="product"></app-product-card>
   }
 </div>

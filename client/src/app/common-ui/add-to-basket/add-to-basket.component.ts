@@ -1,10 +1,18 @@
-import { Component, effect, inject, Input, signal } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  effect,
+  inject,
+  Input,
+  signal,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { BasketService } from '../../data/services/basket.service';
 import { authActions } from '../../data/store/auth/auth.actions';
 import { selectBasket, selectUser } from '../../data/store/auth/auth.selectors';
 import { ordersActions } from '../../data/store/order/order.actions';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-to-basket',
@@ -20,6 +28,7 @@ export class AddToBasketComponent {
   basket = this.store.selectSignal(selectBasket);
   isInBasket = signal(false);
   productCount = signal(0);
+  cdr = inject(ChangeDetectorRef);
 
   //@ts-ignore
   @Input() product;
@@ -34,6 +43,7 @@ export class AddToBasketComponent {
       //@ts-ignore
 
       if (index > -1 && this.basket()?.products[index].jars > 0) {
+        console.log(this.product);
         //@ts-ignore
 
         this.productCount.set(this.basket()?.products[index].jars);
