@@ -21,7 +21,10 @@ export class FiltersDesktopComponent {
   categories = signal<string[]>([]);
   products = this.store.selectSignal(selectProducts);
   filtersService = inject(FiltersService);
-  sortControl = new FormControl('');
+  sortControl = new FormControl('popular');
+  ngOnInit() {
+    this.filtersService.resetFilters();
+  }
 
   constructor() {
     const newCategories: string[] = [];

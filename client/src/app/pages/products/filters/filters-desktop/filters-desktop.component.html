@@ -3,7 +3,11 @@
 
   <div class="select__filters-desktop">
     <div class="title-select__filters-desktop">Сначала</div>
-    <select [formControl]="sortControl" class="select__filters-product-page">
+    <select
+      aria-label="Сортировка"
+      [formControl]="sortControl"
+      class="select__filters-product-page"
+    >
       <option value="popular">популярное</option>
       <option value="price-down">дешевле</option>
       <option value="price-up">дороже</option>
