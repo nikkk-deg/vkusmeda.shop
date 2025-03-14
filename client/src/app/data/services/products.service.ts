@@ -4,13 +4,15 @@ import { Store } from '@ngrx/store';
 import { take, tap, catchError, EMPTY } from 'rxjs';
 import { ProductInterface } from '../interfaces/product.interface';
 import { productsActions } from '../store/product/product.actions';
+import { environment } from '../../../enviroments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
   #http = inject(HttpClient);
-  apiUrl = 'http://localhost:3000/api/product';
+  apiUrl = `${environment.apiUrl}product`;
+
   store = inject(Store);
 
   getProducts() {

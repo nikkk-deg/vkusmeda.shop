@@ -7,13 +7,14 @@ import { CookieService } from 'ngx-cookie-service';
 import { Observable, of, tap, catchError, EMPTY, finalize, take } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { authActions } from '../store/auth/auth.actions';
+import { environment } from '../../../enviroments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   #http = inject(HttpClient);
-  apiUrl = 'http://localhost:3000/api/auth';
+  apiUrl = `${environment.apiUrl}auth`;
   router = inject(Router);
   products = signal<UserInterface | null>(null);
   cookieService = inject(CookieService);

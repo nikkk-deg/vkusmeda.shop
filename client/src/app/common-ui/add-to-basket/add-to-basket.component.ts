@@ -43,7 +43,6 @@ export class AddToBasketComponent {
       //@ts-ignore
 
       if (index > -1 && this.basket()?.products[index].jars > 0) {
-        console.log(this.product);
         //@ts-ignore
 
         this.productCount.set(this.basket()?.products[index].jars);

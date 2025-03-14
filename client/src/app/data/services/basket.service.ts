@@ -10,13 +10,15 @@ import { catchError, delay, EMPTY, of, take, tap } from 'rxjs';
 import { authActions } from '../store/auth/auth.actions';
 import { selectUser } from '../store/auth/auth.selectors';
 import { LocalStorageService } from './local-storage.service';
+import { environment } from '../../../enviroments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BasketService {
   #http = inject(HttpClient);
-  apiUrl = 'http://localhost:3000/api/basket/';
+  apiUrl = `${environment.apiUrl}basket/`;
+
   cookieService = inject(CookieService);
   store = inject(Store);
   user = this.store.selectSignal(selectUser);
@@ -64,7 +66,7 @@ export class BasketService {
       products.forEach((item) => {
         this.#http
           .post(
-            'http://localhost:3000/api/basket/remove',
+            `${environment.apiUrl}basket/remove`,
             { userId: this.user()?._id, productId: item.productId._id },
             headers
           )

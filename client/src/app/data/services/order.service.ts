@@ -9,13 +9,14 @@ import { authActions } from '../store/auth/auth.actions';
 import { OrdersInterface } from '../interfaces/orders.interface';
 import { catchError, EMPTY, take, tap } from 'rxjs';
 import { selectPreOrder } from '../store/order/order.selectors';
+import { environment } from '../../../enviroments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
   #http = inject(HttpClient);
-  apiUrl = 'http://localhost:3000/api/orders/';
+  apiUrl = `${environment.apiUrl}orders/`;
   router = inject(Router);
   products = signal<UserInterface | null>(null);
   cookieService = inject(CookieService);
