@@ -25,6 +25,21 @@ export class ProductComponent implements OnInit {
   productMainPhoto = signal('');
   router = inject(Router);
 
+  honey = [
+    { _id: '67bc7824328859a5877ee29a', titleRu: 'Акациевый мёд' },
+    { _id: '67bc7824328859a5877ee29b', titleRu: 'Клеверный мёд' },
+    { _id: '67bc7824328859a5877ee29c', titleRu: 'Луговой мёд' },
+    { _id: '67bc7824328859a5877ee29d', titleRu: 'Гречишный мёд' },
+    { _id: '67bc7824328859a5877ee29e', titleRu: 'Шалфейный мёд' },
+    { _id: '67bc7824328859a5877ee29f', titleRu: 'Многоцветковый мёд' },
+    { _id: '67bc7824328859a5877ee2a0', titleRu: 'Липовый мёд' },
+    { _id: '67bc7824328859a5877ee2a1', titleRu: 'Рапсовый мёд' },
+    { _id: '67bc7824328859a5877ee2a2', titleRu: 'Одуванчиковый мёд' },
+    { _id: '67bc7824328859a5877ee2a3', titleRu: 'Рододендроновый мёд' },
+    { _id: '67bc7824328859a5877ee2a4', titleRu: 'Каштановый мёд' },
+    { _id: '67bc7824328859a5877ee2a5', titleRu: 'Подсолнечный мёд' },
+  ];
+
   constructor() {
     effect(() => {
       this.product.set(
@@ -46,6 +61,27 @@ export class ProductComponent implements OnInit {
     this.route.paramMap.pipe(take(1)).subscribe((params) => {
       this.productId.set(params.get('productId'));
       this.productSlug.set(params.get('productSlug'));
+      this.titleService.setTitle(
+        `${
+          this.honey.filter((item) => item._id === params.get('productId'))[0]
+            .titleRu
+        } купить мед`
+      );
+
+      this.metaService.updateTag({
+        name: 'description',
+        content: `${
+          this.honey.filter((item) => item._id === params.get('productId'))[0]
+            .titleRu
+        } - один из самых популярных и полезных видов меда. Узнайте больше о его свойствах и приобретите с доставкой на дом!`,
+      });
+      this.metaService.updateTag({
+        name: 'keywords',
+        content: `${
+          this.honey.filter((item) => item._id === params.get('productId'))[0]
+            .titleRu
+        }, натуральный мед, купить мед, мед доставка`,
+      });
     });
   }
 
