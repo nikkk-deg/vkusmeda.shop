@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,6 +10,11 @@ import { Router } from '@angular/router';
 })
 export class NotFoundComponent {
   router = inject(Router);
+  titleService = inject(Title);
+
+  ngOnInit() {
+    this.titleService.setTitle('Вкус Мёда');
+  }
 
   moveBack() {
     this.router.navigate(['']);

@@ -15,6 +15,7 @@ import { ordersActions } from '../../data/store/order/order.actions';
 import { authActions } from '../../data/store/auth/auth.actions';
 import { BasketService } from '../../data/services/basket.service';
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-make-order',
@@ -32,6 +33,11 @@ export class MakeOrderComponent {
   cookieService = inject(CookieService);
   basketService = inject(BasketService);
   checked = signal(false);
+  titleService = inject(Title);
+
+  ngOnInit() {
+    this.titleService.setTitle('Оформление заказа');
+  }
 
   changeChecked() {
     this.checked.set(!this.checked());

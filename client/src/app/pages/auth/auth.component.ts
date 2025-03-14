@@ -15,6 +15,7 @@ import {
   selectEmailError,
   selectUser,
 } from '../../data/store/auth/auth.selectors';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-auth',
@@ -30,6 +31,7 @@ export class AuthComponent implements OnInit {
   user = this.store.selectSignal(selectUser);
   injector = inject(Injector);
   isErrorEmail = this.store.selectSignal(selectEmailError);
+  titleService = inject(Title);
 
   onSubmit() {
     runInInjectionContext(this.injector, () => {
@@ -38,6 +40,8 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.titleService.setTitle('Авторизация');
+
     this.route.queryParamMap.subscribe((params) => {
       const token = params.get('token');
       if (token) {

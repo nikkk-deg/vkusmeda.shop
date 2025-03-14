@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { authActions } from '../../data/store/auth/auth.actions';
 import { OrdersInterface } from '../../data/interfaces/orders.interface';
 import { JsonPipe } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-orders',
@@ -17,6 +18,11 @@ export class OrdersComponent {
   user = this.store.selectSignal(selectUser);
   productsCount = signal(0);
   orders = signal<OrdersInterface[] | null>(null);
+  titleService = inject(Title);
+
+  ngOnInit() {
+    this.titleService.setTitle('Заказы');
+  }
 
   constructor() {
     effect(() => {

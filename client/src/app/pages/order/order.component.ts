@@ -16,6 +16,7 @@ import { JsonPipe } from '@angular/common';
 import { OrderService } from '../../data/services/order.service';
 import { authActions } from '../../data/store/auth/auth.actions';
 import { CookieService } from 'ngx-cookie-service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-order',
@@ -34,6 +35,7 @@ export class OrderComponent {
   totalPrice = signal(0);
   router = inject(Router);
   cookieService = inject(CookieService);
+  titleService = inject(Title);
 
   constructor() {
     effect(() => {
@@ -66,6 +68,8 @@ export class OrderComponent {
   }
 
   ngOnInit() {
+    this.titleService.setTitle('Заказ');
+
     this.route.paramMap.pipe(take(1)).subscribe((params) => {
       this.orderId.set(params.get('orderId'));
     });

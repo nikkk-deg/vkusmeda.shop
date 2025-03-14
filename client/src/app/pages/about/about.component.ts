@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-about',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './about.component.scss',
 })
 export class AboutComponent {
+  titleService = inject(Title);
+
+  ngOnInit() {
+    this.titleService.setTitle('О нас');
+  }
   techList = [
     { pict: '/assets/svg/nest-icon.svg', text: 'NestJS - backend' },
     { pict: '/assets/svg/angular-icon.svg', text: 'Angular - frontend' },

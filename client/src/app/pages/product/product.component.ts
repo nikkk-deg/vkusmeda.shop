@@ -26,18 +26,18 @@ export class ProductComponent implements OnInit {
   router = inject(Router);
 
   honey = [
-    { _id: '67bc7824328859a5877ee29a', titleRu: 'Акациевый мёд' },
-    { _id: '67bc7824328859a5877ee29b', titleRu: 'Клеверный мёд' },
-    { _id: '67bc7824328859a5877ee29c', titleRu: 'Луговой мёд' },
-    { _id: '67bc7824328859a5877ee29d', titleRu: 'Гречишный мёд' },
-    { _id: '67bc7824328859a5877ee29e', titleRu: 'Шалфейный мёд' },
-    { _id: '67bc7824328859a5877ee29f', titleRu: 'Многоцветковый мёд' },
-    { _id: '67bc7824328859a5877ee2a0', titleRu: 'Липовый мёд' },
-    { _id: '67bc7824328859a5877ee2a1', titleRu: 'Рапсовый мёд' },
-    { _id: '67bc7824328859a5877ee2a2', titleRu: 'Одуванчиковый мёд' },
-    { _id: '67bc7824328859a5877ee2a3', titleRu: 'Рододендроновый мёд' },
-    { _id: '67bc7824328859a5877ee2a4', titleRu: 'Каштановый мёд' },
-    { _id: '67bc7824328859a5877ee2a5', titleRu: 'Подсолнечный мёд' },
+    { _id: '679dd483dd24a0f6b7579afe', titleRu: 'Акациевый мёд' },
+    { _id: '679dd483dd24a0f6b7579aff', titleRu: 'Клеверный мёд' },
+    { _id: '679dd483dd24a0f6b7579b00', titleRu: 'Луговой мёд' },
+    { _id: '679dd483dd24a0f6b7579b01', titleRu: 'Гречишный мёд' },
+    { _id: '679dd483dd24a0f6b7579b02', titleRu: 'Шалфейный мёд' },
+    { _id: '679dd483dd24a0f6b7579b03', titleRu: 'Многоцветковый мёд' },
+    { _id: '679dd4f6dd24a0f6b7579b05', titleRu: 'Липовый мёд' },
+    { _id: '679dd4f6dd24a0f6b7579b06', titleRu: 'Рапсовый мёд' },
+    { _id: '679dd4f6dd24a0f6b7579b07', titleRu: 'Одуванчиковый мёд' },
+    { _id: '679dd4f6dd24a0f6b7579b08', titleRu: 'Рододендроновый мёд' },
+    { _id: '679dd4f6dd24a0f6b7579b09', titleRu: 'Каштановый мёд' },
+    { _id: '679dd4f6dd24a0f6b7579b0a', titleRu: 'Подсолнечный мёд' },
   ];
 
   constructor() {

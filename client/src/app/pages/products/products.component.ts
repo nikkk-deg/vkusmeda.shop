@@ -8,6 +8,7 @@ import {
 import { ProductCardComponent } from './product-card/product-card.component';
 import { FiltersComponent } from './filters/filters.component';
 import { JsonPipe } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-products',
@@ -20,6 +21,11 @@ export class ProductsComponent {
   filteredProducts = signal<ProductInterface[] | []>([]);
   productsFromStore = this.store.selectSignal(selectProducts);
   filters = this.store.selectSignal(selectFilters);
+  titleService = inject(Title);
+
+  ngOnInit() {
+    this.titleService.setTitle('Товары');
+  }
 
   constructor() {
     effect(() => {
