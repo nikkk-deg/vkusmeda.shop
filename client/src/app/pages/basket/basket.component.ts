@@ -14,6 +14,7 @@ import { ProductInterfaceForOrder } from '../../data/interfaces/order.interface'
 import { ordersActions } from '../../data/store/order/order.actions';
 import { BasketService } from '../../data/services/basket.service';
 import { authActions } from '../../data/store/auth/auth.actions';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-basket',
@@ -29,6 +30,11 @@ export class BasketComponent {
   totalPrice = signal(0);
   totalCount = signal(0);
   user = this.store.selectSignal(selectUser);
+  titleService = inject(Title);
+
+  ngOnInit() {
+    this.titleService.setTitle('Корзина');
+  }
 
   constructor() {
     effect(() => {
