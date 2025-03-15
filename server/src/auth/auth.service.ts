@@ -30,9 +30,6 @@ export class AuthService {
 
   async sendLoginLink(email: string) {
     try {
-      const user = this.findUser({ email: email });
-      if (!user) this.createUser({ email: email });
-
       const resetToken = this.jwtService.sign(
         { email: email },
         {
