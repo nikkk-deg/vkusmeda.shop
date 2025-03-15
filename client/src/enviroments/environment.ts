@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'http://vkusmeda.shop/api/',
+  apiUrl: 'https://vkusmeda.shop/api/',
 };

@@ -95,3 +95,22 @@ body {
 .custom-checkbox input:checked + span::before {
   background: var(--yellow-color); /* Желтая заливка */
 }
+
+html {
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+@media (forced-colors: active) {
+  * {
+    forced-color-adjust: none;
+  }
+}
+
+a {
+  color: black;
+}
+
+a:before {
+  color: black;
+}
