@@ -1,24 +1,8 @@
-# Определяем базовый образ. Используем официальный образ Node.js
-FROM node:16-alpine
-
-# Создаем директорию приложения внутри образа
-WORKDIR /usr/src/app
-
-# Копируем файлы 'package.json' и 'package-lock.json' (если есть)
+FROM node:18-alpine
+WORKDIR /app
 COPY package*.json ./
-
-# Устанавливаем зависимости
 RUN npm install
-
-# Копируем исходный код приложения в образ
 COPY . .
-
-# Собираем приложение, если это необходимо
 RUN npm run build
-
-COPY .env ./
-# Определяем порт, на котором будет работать приложение
+CMD ["node", "dist/main.js"]
 EXPOSE 3000
-
-# Запускаем приложение
-CMD ["node", "dist/main"]

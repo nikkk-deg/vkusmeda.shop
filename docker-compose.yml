@@ -1,28 +1,31 @@
-networks:
-  dev:
-
 services:
-
-nginx:
-  image: nginx:stable-alpine
-  ports:
-    - "80:80"
-  volumes:
-    - "./nginx.conf:/etc/nginx/nginx.conf"
-  depends_on:
-    - backend
-    - frontend
-  networks:
-    - dev
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    depends_on:
+      - backend
+    restart: always
 
   backend:
     build:
       context: ./server
-    networks:
-      - dev
+      dockerfile: Dockerfile
+    env_file:
+      - ./server/.env
+    ports:
+      - "3000:3000"
+    restart: always
 
-  frontend:
-    build:
-      context: ./client
-    networks:
-      - dev
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
+    restart: always
