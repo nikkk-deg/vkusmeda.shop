@@ -19,6 +19,7 @@ import { OrdersComponent } from './pages/orders/orders.component';
 import { MakeOrderComponent } from './pages/make-order/make-order.component';
 import { OrderComponent } from './pages/order/order.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ProductResolver } from './data/services/product.resolver';
 
 export const routes: Routes = [
   {
@@ -40,7 +41,11 @@ export const routes: Routes = [
       { path: 'make-order', component: MakeOrderComponent },
       { path: 'about', component: AboutComponent },
       { path: 'orders', component: OrdersComponent },
-      { path: 'product/:productId', component: ProductComponent },
+      {
+        path: 'product/:productId',
+        component: ProductComponent,
+        resolve: { product: ProductResolver },
+      },
       { path: 'order/:orderId', component: OrderComponent },
       { path: '**', component: NotFoundComponent },
     ],

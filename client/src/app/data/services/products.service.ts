@@ -36,4 +36,10 @@ export class ProductsService {
   getIdsForPrerender() {
     return this.#http.get<ProductInterface[]>(`${this.apiUrl}`).pipe(take(1));
   }
+
+  getProductById(id: string | null) {
+    return this.#http
+      .get<ProductInterface>(`${this.apiUrl}/${id}`)
+      .pipe(take(1));
+  }
 }
