@@ -1,5 +1,6 @@
 FROM node:18-alpine
 RUN npm install -g @angular/cli
+RUN apk add --no-cache curl
 
 WORKDIR /app
 COPY package*.json ./
