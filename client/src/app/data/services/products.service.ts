@@ -34,12 +34,14 @@ export class ProductsService {
   }
 
   getIdsForPrerender() {
-    return this.#http.get<ProductInterface[]>(`${this.apiUrl}`).pipe(take(1));
+    return this.#http
+      .get<ProductInterface[]>(`http://localhost:3000/product`)
+      .pipe(take(1));
   }
 
   getProductById(id: string | null) {
     return this.#http
-      .get<ProductInterface>(`${this.apiUrl}/${id}`)
+      .get<ProductInterface>(`http://localhost:3000/product/${id}`)
       .pipe(take(1));
   }
 }
