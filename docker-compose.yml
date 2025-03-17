@@ -1,14 +1,4 @@
 services:
-  frontend:
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    ports:
-      - "4000:4000"
-    depends_on:
-      - backend
-    restart: always
-
   backend:
     build:
       context: ./server
@@ -19,13 +9,23 @@ services:
       - "3000:3000"
     restart: always
 
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    depends_on:
+      - backend
+    restart: always
+    entrypoint: ["/bin/sh", "-c", "/app/entrypoint.sh"]
+
   nginx:
     image: nginx:latest
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
       - "/etc/letsencrypt:/etc/letsencrypt"
-
     ports:
       - "80:80"
       - "443:443"
