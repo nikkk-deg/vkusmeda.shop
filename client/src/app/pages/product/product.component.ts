@@ -65,17 +65,17 @@ export class ProductComponent implements OnInit {
         `${
           this.honey.filter((item) => item._id === params.get('productId'))[0]
             .titleRu
-        } купить мед`
+        } купить`
       );
 
-      this.metaService.updateTag({
+      this.metaService.addTag({
         name: 'description',
         content: `${
           this.honey.filter((item) => item._id === params.get('productId'))[0]
             .titleRu
         } - один из самых популярных и полезных видов меда. Узнайте больше о его свойствах и приобретите с доставкой на дом!`,
       });
-      this.metaService.updateTag({
+      this.metaService.addTag({
         name: 'keywords',
         content: `${
           this.honey.filter((item) => item._id === params.get('productId'))[0]
