@@ -68,6 +68,8 @@ export class BasketComponent {
     this.basketService.deleteManyFromBasket(this.preOrder());
     this.store.dispatch(authActions.getUserSuccess({ user: this.user() }));
     this.store.dispatch(ordersActions.clearPreOrder());
-    sessionStorage.clear();
+    if (typeof window !== 'undefined' && sessionStorage) {
+      sessionStorage.clear();
+    }
   }
 }

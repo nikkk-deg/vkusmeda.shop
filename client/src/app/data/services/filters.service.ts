@@ -11,51 +11,58 @@ export class FiltersService {
   filters = this.store.selectSignal(selectFilters);
 
   changeSelectAndDispatch(select: 'popular' | 'price-up' | 'price-down') {
-    //@ts-ignore
-    const filters = JSON.parse(sessionStorage.getItem('filters'));
-    filters.sortBy = select;
-    sessionStorage.setItem('filters', JSON.stringify(filters));
-    this.store.dispatch(productsActions.setFilters({ filters: filters }));
+    if (typeof window !== 'undefined' && sessionStorage) {
+      //@ts-ignore
+      const filters = JSON.parse(sessionStorage.getItem('filters'));
+      filters.sortBy = select;
+      sessionStorage.setItem('filters', JSON.stringify(filters));
+      this.store.dispatch(productsActions.setFilters({ filters: filters }));
+    }
   }
 
   changeCategoryAndDispatch(category: string) {
-    //@ts-ignore
-    let filters = JSON.parse(sessionStorage.getItem('filters'));
-    const index = filters.selected.findIndex((item: string) => {
-      return item === category;
-    });
-    if (index > -1) {
-      const newFilters = filters.selected.filter(
-        (item: string) => item !== category
-      );
-      filters.selected = newFilters;
-    } else {
-      filters.selected.push(category);
-    }
+    if (typeof window !== 'undefined' && sessionStorage) {
+      //@ts-ignore
+      let filters = JSON.parse(sessionStorage.getItem('filters'));
+      const index = filters.selected.findIndex((item: string) => {
+        return item === category;
+      });
+      if (index > -1) {
+        const newFilters = filters.selected.filter(
+          (item: string) => item !== category
+        );
+        filters.selected = newFilters;
+      } else {
+        filters.selected.push(category);
+      }
 
-    sessionStorage.setItem('filters', JSON.stringify(filters));
-    this.store.dispatch(productsActions.setFilters({ filters: filters }));
+      sessionStorage.setItem('filters', JSON.stringify(filters));
+      this.store.dispatch(productsActions.setFilters({ filters: filters }));
+    }
   }
 
   getFiltersFromSSAndDispatch() {
-    const filters = sessionStorage.getItem('filters');
-    if (!filters) {
-      const newFilters = {
-        sortBy: 'popular',
-        selected: [],
-      };
+    if (typeof window !== 'undefined' && sessionStorage) {
+      const filters = sessionStorage.getItem('filters');
+      if (!filters) {
+        const newFilters = {
+          sortBy: 'popular',
+          selected: [],
+        };
 
-      sessionStorage.setItem('filters', JSON.stringify(newFilters));
-      //@ts-ignore
-      this.store.dispatch(productsActions.setFilters({ filters: newFilters }));
-      return;
+        sessionStorage.setItem('filters', JSON.stringify(newFilters));
+        //@ts-ignore
+        this.store.dispatch(
+          productsActions.setFilters({ filters: newFilters })
+        );
+        return;
+      }
+      const filtersForStore = JSON.parse(filters);
+
+      this.store.dispatch(
+        productsActions.setFilters({ filters: filtersForStore })
+      );
     }
-    const filtersForStore = JSON.parse(filters);
-
-    this.store.dispatch(
-      productsActions.setFilters({ filters: filtersForStore })
-    );
-
     return;
   }
 
@@ -64,8 +71,9 @@ export class FiltersService {
       sortBy: 'popular',
       selected: [],
     };
-
-    sessionStorage.setItem('filters', JSON.stringify(newFilters));
-    this.store.dispatch(productsActions.setFilters({ filters: newFilters }));
+    if (typeof window !== 'undefined' && sessionStorage) {
+      sessionStorage.setItem('filters', JSON.stringify(newFilters));
+      this.store.dispatch(productsActions.setFilters({ filters: newFilters }));
+    }
   }
 }

@@ -1,4 +1,3 @@
-import { JsonPipe } from '@angular/common';
 import { Component, effect, inject, OnInit, signal } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -10,7 +9,7 @@ import { AddToBasketComponent } from '../../common-ui/add-to-basket/add-to-baske
 
 @Component({
   selector: 'app-product',
-  imports: [RouterLink, AddToBasketComponent, JsonPipe],
+  imports: [RouterLink, AddToBasketComponent],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
 })

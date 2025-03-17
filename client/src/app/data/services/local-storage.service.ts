@@ -6,16 +6,20 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
   setItem(key: string, value: any): void {
     try {
-      localStorage.setItem(key, JSON.stringify(value));
+      if (typeof window !== 'undefined' && localStorage) {
+        localStorage.setItem(key, JSON.stringify(value));
+      }
     } catch (e) {
       console.error('Error saving to localStorage', e);
     }
   }
 
-  getItem<T>(key: string): T | null {
+  getItem<T>(key: string) {
     try {
-      const item = localStorage.getItem(key);
-      return item ? JSON.parse(item) : null;
+      if (typeof window !== 'undefined' && localStorage) {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : null;
+      }
     } catch (e) {
       console.error('Error getting data from localStorage', e);
       return null;
@@ -23,10 +27,14 @@ export class LocalStorageService {
   }
 
   removeItem(key: string): void {
-    localStorage.removeItem(key);
+    if (typeof window !== 'undefined' && localStorage) {
+      localStorage.removeItem(key);
+    }
   }
 
   clear(): void {
-    localStorage.clear();
+    if (typeof window !== 'undefined' && localStorage) {
+      localStorage.clear();
+    }
   }
 }

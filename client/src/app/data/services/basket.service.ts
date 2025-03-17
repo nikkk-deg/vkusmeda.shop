@@ -78,6 +78,7 @@ export class BasketService {
       this.localStorageService.getItem<BasketInterface>('basket');
 
     products.forEach((item) => {
+      //@ts-ignore
       const index = localBasket?.products.findIndex((j) => {
         return j.productId._id === item.productId._id;
       });
@@ -105,10 +106,13 @@ export class BasketService {
       });
       return EMPTY;
     } else {
-      const existingProduct = localBasket.products.filter((item) => {
+      const existingProduct = localBasket.products.filter(
         //@ts-ignore
-        return item.productId._id === product._id;
-      });
+        (item) => {
+          //@ts-ignore
+          return item.productId._id === product._id;
+        }
+      );
 
       if (existingProduct.length) {
         const index = localBasket.products.findIndex(

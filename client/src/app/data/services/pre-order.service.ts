@@ -10,24 +10,28 @@ import { ProductInterfaceForBasket } from '../interfaces/basket.interface';
 export class PreOrderService {
   store = inject(Store);
   getPreOrderFromSSAndDispatch() {
-    const preOrder = sessionStorage.getItem('preOrder');
-    if (!preOrder) {
-      const newPreOrder = {
-        products: [],
-      };
+    if (typeof window !== 'undefined' && sessionStorage) {
+      const preOrder = sessionStorage.getItem('preOrder');
+      if (!preOrder) {
+        const newPreOrder = {
+          products: [],
+        };
 
-      sessionStorage.setItem('preOrder', JSON.stringify(newPreOrder.products));
+        sessionStorage.setItem(
+          'preOrder',
+          JSON.stringify(newPreOrder.products)
+        );
+        this.store.dispatch(
+          ordersActions.setPreOrderToSS({ products: newPreOrder.products })
+        );
+        return;
+      }
+      const preOrderForStore = JSON.parse(preOrder);
+
       this.store.dispatch(
-        ordersActions.setPreOrderToSS({ products: newPreOrder.products })
+        ordersActions.setPreOrderToSS({ products: preOrderForStore })
       );
-      return;
     }
-    const preOrderForStore = JSON.parse(preOrder);
-
-    this.store.dispatch(
-      ordersActions.setPreOrderToSS({ products: preOrderForStore })
-    );
-
     return;
   }
 }

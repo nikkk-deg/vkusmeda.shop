@@ -26,7 +26,9 @@ export const OrderFeature = createFeature({
       } else {
         products.push(payload.product);
       }
-      sessionStorage.setItem('preOrder', JSON.stringify(products));
+      if (typeof window !== 'undefined' && sessionStorage) {
+        sessionStorage.setItem('preOrder', JSON.stringify(products));
+      }
       return { ...state, products: products };
     }),
     on(ordersActions.updatePreOrder, (state, payload) => {
@@ -48,8 +50,9 @@ export const OrderFeature = createFeature({
 
         products.splice(index, 1);
       }
-      sessionStorage.setItem('preOrder', JSON.stringify(products));
-
+      if (typeof window !== 'undefined' && sessionStorage) {
+        sessionStorage.setItem('preOrder', JSON.stringify(products));
+      }
       return { ...state, products: products };
     }),
     on(ordersActions.clearPreOrder, (state) => {
