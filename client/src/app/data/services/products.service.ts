@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { take, tap, catchError, EMPTY } from 'rxjs';
+import { take, tap, catchError, EMPTY, map } from 'rxjs';
 import { ProductInterface } from '../interfaces/product.interface';
 import { productsActions } from '../store/product/product.actions';
 import { environment } from '../../../enviroments/environment';
@@ -31,5 +31,9 @@ export class ProductsService {
         return EMPTY;
       })
     );
+  }
+
+  getIdsForPrerender() {
+    return this.#http.get<ProductInterface[]>(`${this.apiUrl}`).pipe(take(1));
   }
 }

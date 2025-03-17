@@ -40,7 +40,7 @@ export const routes: Routes = [
       { path: 'make-order', component: MakeOrderComponent },
       { path: 'about', component: AboutComponent },
       { path: 'orders', component: OrdersComponent },
-      { path: 'product/:productId/:productSlug', component: ProductComponent },
+      { path: 'product/:productId', component: ProductComponent },
       { path: 'order/:orderId', component: OrderComponent },
       { path: '**', component: NotFoundComponent },
     ],

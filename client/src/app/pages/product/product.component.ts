@@ -60,7 +60,7 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.pipe(take(1)).subscribe((params) => {
       this.productId.set(params.get('productId'));
-      this.productSlug.set(params.get('productSlug'));
+      // this.productSlug.set(params.get('productSlug'));
       this.titleService.setTitle(
         `${
           this.honey.filter((item) => item._id === params.get('productId'))[0]
