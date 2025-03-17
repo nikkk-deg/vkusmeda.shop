@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BACKEND_URL="http://vkusmeda.shop/api"
+BACKEND_URL="https://vkusmeda.shop/api"
 
 echo "Waiting for backend to be available at $BACKEND_URL..."
 until curl -s --head --fail "$BACKEND_URL"; do
