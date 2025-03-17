@@ -8,5 +8,8 @@ until curl -s --head --fail "$BACKEND_URL"; do
   sleep 5
 done
 
-echo "Backend is up! Starting Angular..."
+echo "Backend is up! Running Angular build..."
+ng build || { echo "Angular build failed"; exit 1; }
+
+echo "Starting Angular..."
 exec node dist/client2/server/server.mjs
