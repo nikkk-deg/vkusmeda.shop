@@ -6,6 +6,7 @@ import { BasketModule } from './basket/basket.module';
 import { OrdersModule } from './orders/orders.module';
 import { AuthModule } from './auth/auth.module';
 import { MailerModule } from './mailer/mailer.module';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -19,5 +20,6 @@ import { MailerModule } from './mailer/mailer.module';
     OrdersModule,
     AuthModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
