@@ -35,8 +35,7 @@ services:
       - "80:80"
       - "443:443"
     depends_on:
-      frontend:
-        condition: service_completed_successfully # Nginx стартует после успешной сборки Angular
+      - frontend
     restart: always
 
 volumes:
