@@ -35,13 +35,13 @@ export class ProductsService {
 
   getIdsForPrerender() {
     return this.#http
-      .get<ProductInterface[]>(`http://backend:3000/product`)
+      .get<ProductInterface[]>(`http://backend:3000/api/product`)
       .pipe(take(1));
   }
 
   getProductById(id: string | null) {
     return this.#http
-      .get<ProductInterface>(`http://backend:3000/product/${id}`)
+      .get<ProductInterface>(`http://backend:3000/api/product/${id}`)
       .pipe(take(1));
   }
 }
