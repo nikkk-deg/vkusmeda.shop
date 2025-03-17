@@ -7,7 +7,6 @@ import {
 } from '../../data/store/product/product.selectors';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { FiltersComponent } from './filters/filters.component';
-import { JsonPipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
 @Component({

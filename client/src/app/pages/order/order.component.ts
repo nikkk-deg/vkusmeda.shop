@@ -12,7 +12,6 @@ import { selectProducts } from '../../data/store/product/product.selectors';
 import { OrdersInterface } from '../../data/interfaces/orders.interface';
 import { Store } from '@ngrx/store';
 import { selectOrders } from '../../data/store/auth/auth.selectors';
-import { JsonPipe } from '@angular/common';
 import { OrderService } from '../../data/services/order.service';
 import { authActions } from '../../data/store/auth/auth.actions';
 import { CookieService } from 'ngx-cookie-service';
@@ -20,7 +19,7 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-order',
-  imports: [RouterLink, JsonPipe],
+  imports: [RouterLink],
   templateUrl: './order.component.html',
   styleUrl: './order.component.scss',
 })

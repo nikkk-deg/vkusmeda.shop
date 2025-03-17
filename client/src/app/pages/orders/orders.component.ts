@@ -4,12 +4,11 @@ import { selectOrders, selectUser } from '../../data/store/auth/auth.selectors';
 import { RouterLink } from '@angular/router';
 import { authActions } from '../../data/store/auth/auth.actions';
 import { OrdersInterface } from '../../data/interfaces/orders.interface';
-import { JsonPipe } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-orders',
-  imports: [RouterLink, JsonPipe],
+  imports: [RouterLink],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss',
 })

@@ -1,7 +1,6 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectBasket, selectUser } from '../../data/store/auth/auth.selectors';
-import { JsonPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AddToBasketComponent } from '../../common-ui/add-to-basket/add-to-basket.component';
 import {
@@ -18,7 +17,7 @@ import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-basket',
-  imports: [RouterLink, AddToBasketComponent, JsonPipe],
+  imports: [RouterLink, AddToBasketComponent],
   templateUrl: './basket.component.html',
   styleUrl: './basket.component.scss',
 })

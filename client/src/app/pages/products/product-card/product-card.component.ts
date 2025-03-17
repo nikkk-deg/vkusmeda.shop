@@ -1,8 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { ProductInterface } from '../../../data/interfaces/product.interface';
 import { BasketService } from '../../../data/services/basket.service';
-import { JsonPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { authActions } from '../../../data/store/auth/auth.actions';
 import { selectUser } from '../../../data/store/auth/auth.selectors';
@@ -10,7 +9,7 @@ import { AddToBasketComponent } from '../../../common-ui/add-to-basket/add-to-ba
 
 @Component({
   selector: 'app-product-card',
-  imports: [RouterLink, AddToBasketComponent],
+  imports: [AddToBasketComponent],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss',
 })

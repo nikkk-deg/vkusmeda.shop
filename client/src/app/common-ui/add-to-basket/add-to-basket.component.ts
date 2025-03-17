@@ -12,7 +12,6 @@ import { BasketService } from '../../data/services/basket.service';
 import { authActions } from '../../data/store/auth/auth.actions';
 import { selectBasket, selectUser } from '../../data/store/auth/auth.selectors';
 import { ordersActions } from '../../data/store/order/order.actions';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-to-basket',
