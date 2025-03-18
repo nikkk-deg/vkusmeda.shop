@@ -1,6 +1,6 @@
 <div class="card-wrapper__product-card">
   <img
-    (click)="navigateTo(product._id)"
+    [routerLink]="['/product/' + product._id]"
     [src]="'/assets/images/honey/' + product.photos[0]"
     [alt]="product.titleRu + ' photo'"
     class="iamge__product-card"

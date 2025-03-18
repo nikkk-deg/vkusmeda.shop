@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ProductInterface } from '../../../data/interfaces/product.interface';
 import { BasketService } from '../../../data/services/basket.service';
 import { Store } from '@ngrx/store';
@@ -9,7 +9,7 @@ import { AddToBasketComponent } from '../../../common-ui/add-to-basket/add-to-ba
 
 @Component({
   selector: 'app-product-card',
-  imports: [AddToBasketComponent],
+  imports: [AddToBasketComponent, RouterLink],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss',
 })
