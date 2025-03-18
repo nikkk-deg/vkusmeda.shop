@@ -27,9 +27,9 @@ services:
       test:
         [
           "CMD",
-          "test",
-          "-f",
-          "/app/dist/client2/browser/product/679dd4f6dd24a0f6b7579b08/index.html",
+          "sh",
+          "-c",
+          "test $(find /app/dist/client2/browser/product/ -mindepth 1 -maxdepth 1 -type d | wc -l) -eq 12",
         ]
       interval: 10s
       timeout: 5s

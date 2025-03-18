@@ -35,12 +35,12 @@ export class ProductsService {
 
   getIdsForPrerender() {
     return this.#http
-      .get<ProductInterface[]>(`http://backend:3000/api/product`)
+      .get<ProductInterface[]>(`https://vkusmeda.shop/api/product`)
       .pipe(
         take(1),
         catchError(() =>
           this.#http
-            .get<ProductInterface[]>(`https://vkusmeda.shop/api/product`)
+            .get<ProductInterface[]>(`http://backend:3000/api/product`)
             .pipe(take(1))
         )
       );
@@ -48,12 +48,12 @@ export class ProductsService {
 
   getProductById(id: string | null) {
     return this.#http
-      .get<ProductInterface[]>(`http://backend:3000/api/product/${id}`)
+      .get<ProductInterface[]>(`https://vkusmeda.shop/api/product/${id}`)
       .pipe(
         take(1),
         catchError(() =>
           this.#http
-            .get<ProductInterface[]>(`https://vkusmeda.shop/api/product/${id}`)
+            .get<ProductInterface[]>(`http://backend:3000/api/product/${id}`)
             .pipe(take(1))
         )
       );
