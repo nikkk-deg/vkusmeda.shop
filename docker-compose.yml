@@ -23,7 +23,14 @@ services:
     entrypoint: ["/bin/sh", "-c", "/app/entrypoint.sh"]
     volumes:
       - client_dist:/app/dist # Общий volume для копирования файлов
-    test: ["CMD", "test", "-f", "/app/dist/client2/browser/product/679dd4f6dd24a0f6b7579b08/index.html"]
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "test",
+          "-f",
+          "/app/dist/client2/browser/product/679dd4f6dd24a0f6b7579b08/index.html",
+        ]
       interval: 10s
       timeout: 5s
       retries: 5
