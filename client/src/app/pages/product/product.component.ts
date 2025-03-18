@@ -40,7 +40,7 @@ export class ProductComponent {
         name: 'keywords',
         content: this.product()!.titleRu,
       },
-      { name: 'author', content: 'Вкус Мёда' },
+      { name: 'author', content: 'вкус меда' },
       { name: 'robots', content: 'index, follow' },
     ]);
   }
