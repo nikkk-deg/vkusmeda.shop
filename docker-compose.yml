@@ -34,7 +34,21 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    depends_on:
+      frontend:
+        condition: service_healthy # Ждем, пока frontend подтвердит, что файлы есть
     restart: always
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "test",
+          "-f",
+          "/usr/share/nginx/html/client2/browser/product/index.html",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   client_dist:

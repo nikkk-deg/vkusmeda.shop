@@ -29,6 +29,20 @@ export class ProductComponent {
   ngOnInit() {
     this.product.set(this.route.snapshot.data['product']);
     this.productMainPhoto.set(this.product()!.photos[0]);
+    this.titleService.setTitle(this.product()!.titleRu);
+    this.metaService.addTags([
+      {
+        name: 'description',
+        content:
+          'Продажа натурального мёда высокого качества. Свежий, ароматный мёд от проверенных пчеловодов. Доставка по всей России. Лучшие цены!',
+      },
+      {
+        name: 'keywords',
+        content: this.product()!.titleRu,
+      },
+      { name: 'author', content: 'Вкус Мёда' },
+      { name: 'robots', content: 'index, follow' },
+    ]);
   }
 
   changeMainPhoto(photo: string) {
