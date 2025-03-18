@@ -43,6 +43,7 @@ services:
       - "/etc/letsencrypt:/etc/letsencrypt"
       - client_dist:/usr/share/nginx/html
       - ./robots.txt:/usr/share/nginx/html/robots.txt:ro
+      - ./sitemap.xml:/usr/share/nginx/html/sitemap.xml:ro # Добавил sitemap.xml
     ports:
       - "80:80"
       - "443:443"
