@@ -1,15 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>https://vkusmeda.shop/</loc>
-        <lastmod>2025-03-18</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://vkusmeda.shop/product/</loc>
-        <lastmod>2025-03-18</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.8</priority>
-    </url>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://vkusmeda.shop/</loc>
+  <lastmod>2025-03-18T11:53:09+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/products</loc>
+  <lastmod>2025-03-18T11:53:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/orders</loc>
+  <lastmod>2025-03-18T11:53:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/about</loc>
+  <lastmod>2025-03-18T11:53:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/auth</loc>
+  <lastmod>2025-03-18T11:53:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/basket</loc>
+  <lastmod>2025-03-18T11:53:09+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/product/679dd4f6dd24a0f6b7579b0a</loc>
+  <lastmod>2025-03-18T11:52:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/product/679dd4f6dd24a0f6b7579b09</loc>
+  <lastmod>2025-03-18T11:52:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/product/679dd4f6dd24a0f6b7579b08</loc>
+  <lastmod>2025-03-18T11:52:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/product/679dd4f6dd24a0f6b7579b07</loc>
+  <lastmod>2025-03-18T11:52:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/product/679dd4f6dd24a0f6b7579b06</loc>
+  <lastmod>2025-03-18T11:52:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/product/679dd4f6dd24a0f6b7579b05</loc>
+  <lastmod>2025-03-18T11:52:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/product/679dd483dd24a0f6b7579b03</loc>
+  <lastmod>2025-03-18T11:52:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/product/679dd483dd24a0f6b7579b02</loc>
+  <lastmod>2025-03-18T11:52:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/product/679dd483dd24a0f6b7579b01</loc>
+  <lastmod>2025-03-18T11:52:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/product/679dd483dd24a0f6b7579b00</loc>
+  <lastmod>2025-03-18T11:52:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/product/679dd483dd24a0f6b7579aff</loc>
+  <lastmod>2025-03-18T11:52:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://vkusmeda.shop/product/679dd483dd24a0f6b7579afe</loc>
+  <lastmod>2025-03-18T11:52:17+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
 </urlset>
