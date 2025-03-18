@@ -48,7 +48,7 @@ export class ProductsService {
 
   getProductById(id: string | null) {
     return this.#http
-      .get<ProductInterface[]>(`http://backend:3000/api/product${id}`)
+      .get<ProductInterface[]>(`http://backend:3000/api/product/${id}`)
       .pipe(
         take(1),
         catchError(() =>
