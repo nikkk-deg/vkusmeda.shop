@@ -41,8 +41,8 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
       - "/etc/letsencrypt:/etc/letsencrypt"
-      - client_dist:/usr/share/nginx/html # Файлы попадают в Nginx через volume
-      - ./robots.txt:/usr/share/nginx/html/robots.txt:ro # Подключаем robots.txt
+      - client_dist:/usr/share/nginx/html
+      - ./robots.txt:/usr/share/nginx/html/robots.txt:ro
     ports:
       - "80:80"
       - "443:443"
