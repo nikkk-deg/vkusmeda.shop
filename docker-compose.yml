@@ -44,7 +44,7 @@ services:
           "CMD",
           "test",
           "-f",
-          "/usr/share/nginx/html/client2/browser/product/index.html",
+          "/usr/share/nginx/html/client2/browser/product/679dd4f6dd24a0f6b7579b0a/index.html",
         ]
       interval: 10s
       timeout: 5s
