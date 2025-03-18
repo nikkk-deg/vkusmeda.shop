@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { take, tap, catchError, EMPTY, map } from 'rxjs';
+import { take, tap, catchError, EMPTY, map, switchMap } from 'rxjs';
 import { ProductInterface } from '../interfaces/product.interface';
 import { productsActions } from '../store/product/product.actions';
 import { environment } from '../../../enviroments/environment';
@@ -36,12 +36,26 @@ export class ProductsService {
   getIdsForPrerender() {
     return this.#http
       .get<ProductInterface[]>(`http://backend:3000/api/product`)
-      .pipe(take(1));
+      .pipe(
+        take(1),
+        catchError(() =>
+          this.#http
+            .get<ProductInterface[]>(`http://vkusmeda.shop/api/product`)
+            .pipe(take(1))
+        )
+      );
   }
 
   getProductById(id: string | null) {
     return this.#http
-      .get<ProductInterface>(`http://backend:3000/api/product/${id}`)
-      .pipe(take(1));
+      .get<ProductInterface[]>(`http://backend:3000/api/product${id}`)
+      .pipe(
+        take(1),
+        catchError(() =>
+          this.#http
+            .get<ProductInterface[]>(`http://vkusmeda.shop/api/product${id}`)
+            .pipe(take(1))
+        )
+      );
   }
 }
