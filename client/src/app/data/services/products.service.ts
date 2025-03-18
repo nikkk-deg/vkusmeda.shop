@@ -53,7 +53,7 @@ export class ProductsService {
         take(1),
         catchError(() =>
           this.#http
-            .get<ProductInterface[]>(`https://vkusmeda.shop/api/product${id}`)
+            .get<ProductInterface[]>(`https://vkusmeda.shop/api/product/${id}`)
             .pipe(take(1))
         )
       );
