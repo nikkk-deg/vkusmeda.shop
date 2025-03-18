@@ -38,17 +38,6 @@ services:
       frontend:
         condition: service_healthy # Ждем, пока frontend подтвердит, что файлы есть
     restart: always
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "test",
-          "-f",
-          "/usr/share/nginx/html/client2/browser/product/679dd4f6dd24a0f6b7579b0a/index.html",
-        ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
 volumes:
   client_dist:
