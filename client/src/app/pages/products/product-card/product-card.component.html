@@ -1,12 +1,15 @@
 <div class="card-wrapper__product-card">
-  <img
-    [routerLink]="['/product/' + product._id]"
-    [src]="'/assets/images/honey/' + product.photos[0]"
-    [alt]="product.titleRu + ' photo'"
-    class="iamge__product-card"
-    height="173px"
-    width="222px"
-  />
+  <a [routerLink]="['/product/' + product._id]">
+    <img
+      [routerLink]="['/product/' + product._id]"
+      [src]="'/assets/images/honey/' + product.photos[0]"
+      [alt]="product.titleRu + ' photo'"
+      class="iamge__product-card"
+      height="173px"
+      width="222px"
+    />
+  </a>
+
   <p class="title__product-card">{{ product.titleRu }}</p>
   <p class="amount__product-card">1 л</p>
   <p class="caption__product-card">
