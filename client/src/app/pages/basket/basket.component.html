@@ -2,14 +2,14 @@
 <div class="wrapper-not-basket__basket">
   <div class="title-not-basket__basket">Ваша корзина пуста :(</div>
   <img
-    src="/assets/images/bakset.png"
+    src="/assets/images/bakset.webp"
     alt="icon basket"
     class="img-not-basket__basket"
     width="650px"
     class="basket-image__basket"
   />
   <img
-    src="/assets/images/ellips3.png"
+    src="/assets/images/ellips3.webp"
     alt="ellips pict"
     width="1468px"
     class="ellips-not-basket__basket"
@@ -57,7 +57,11 @@
               height="80px"
               class="img-product__basket"
               [alt]="'photo' + item.productId.titleEn"
-              [src]="'/assets/images/honey/' + item.productId.photos[0]"
+              [src]="
+                '/assets/images/honey/90px/' +
+                item.productId.photos[0].slice(0, -3) +
+                'webp'
+              "
           /></a>
           <p class="title-product__basket">{{ item.productId.titleRu }}</p>
           <p class="volume-product__basket">1 л</p>

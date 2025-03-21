@@ -1,7 +1,9 @@
 <div class class="wrapper-photos__product">
   <div class="wrapper-main-photo__product">
     <img
-      [src]="'/assets/images/honey/' + productMainPhoto()"
+      [src]="
+        '/assets/images/honey/450px/' + productMainPhoto().slice(0, -3) + 'webp'
+      "
       [alt]="'photo ' + product()!.titleEn"
       width="450px"
     />
@@ -13,7 +15,11 @@
       (click)="changeMainPhoto(product()!.photos[0])"
     >
       <img
-        [src]="'/assets/images/honey/' + product()!.photos[0]"
+        [src]="
+          '/assets/images/honey/90px/' +
+          product()!.photos[0].slice(0, -3) +
+          'webp'
+        "
         [alt]="'first photo ' + product()!.titleEn"
         width="100px"
       />
@@ -23,7 +29,11 @@
       (click)="changeMainPhoto(product()!.photos[1])"
     >
       <img
-        [src]="'/assets/images/honey/' + product()!.photos[1]"
+        [src]="
+          '/assets/images/honey/90px/' +
+          product()!.photos[1].slice(0, -3) +
+          'webp'
+        "
         [alt]="'second photo ' + product()!.titleEn"
         width="100px"
       />

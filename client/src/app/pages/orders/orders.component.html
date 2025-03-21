@@ -1,12 +1,12 @@
 @if (!user()) {
 <div class="wrapper-not-orders__orders">
   <img
-    src="/assets/images/ellips3.png"
+    src="/assets/images/ellips3.webp"
     alt="photo of ellips"
     class="ellips__orders"
   />
   <img
-    src="/assets/images/bee.png"
+    src="/assets/images/bee.webp"
     alt="pict of bee"
     class="bee-image__orders"
   />
@@ -20,12 +20,12 @@
 } @else if (!orders()) {
 <div class="wrapper-not-orders__orders">
   <img
-    src="/assets/images/ellips3.png"
+    src="/assets/images/ellips3.webp"
     alt="photo of ellips"
     class="ellips__orders"
   />
   <img
-    src="/assets/images/bee.png"
+    src="/assets/images/bee.webp"
     alt="pict of bee"
     class="bee-image__orders"
   />
@@ -71,7 +71,11 @@
           @for (item of item.products; track $index) {
           <img
             width="90px"
-            [src]="'/assets/images/honey/' + item.productId.photos[0]"
+            [src]="
+              '/assets/images/honey/90px/' +
+              item.productId.photos[0].slice(0, -3) +
+              'webp'
+            "
             [alt]="'photo' + item.productId.titleEn"
           />
           }
