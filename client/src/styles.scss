@@ -33,6 +33,8 @@ body {
 @media (max-width: 460px) {
   body {
     height: 100vh;
+    touch-action: manipulation;
+    overflow-x: hidden;
   }
 }
 

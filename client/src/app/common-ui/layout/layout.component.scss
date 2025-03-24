@@ -41,6 +41,9 @@
 }
 
 @media (max-width: 460px) {
+  :host {
+    overflow: hidden;
+  }
   .loading__layout {
     margin-top: -100px;
   }
