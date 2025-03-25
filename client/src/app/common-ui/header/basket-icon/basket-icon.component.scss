@@ -23,3 +23,21 @@
   top: -45px;
   right: -5px;
 }
+
+.image__basket-icon {
+  width: 58px;
+}
+
+@media (max-width: 460px) {
+  .image__basket-icon {
+    width: 38px;
+  }
+
+  .basket-count__basket-icon {
+    width: 15px;
+    height: 15px;
+    font-size: 10px;
+    top: -30px;
+    left: 25px;
+  }
+}

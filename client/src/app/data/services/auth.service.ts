@@ -59,7 +59,7 @@ export class AuthService {
 
         this.store.dispatch(authActions.completeUser());
         if (currentLink.includes('auth')) {
-          this.router.navigate(['']);
+          this.router.navigate(['/orders']);
         }
         if (typeof window !== 'undefined' && sessionStorage) {
           if (typeof window !== 'undefined' && sessionStorage) {

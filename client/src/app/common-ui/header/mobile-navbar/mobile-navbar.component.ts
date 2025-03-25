@@ -52,5 +52,7 @@ export class MobileNavbarComponent {
     this.router.events.subscribe(() => {
       this.currentRoute = this.router.url;
     });
+
+    console.log(this.currentRoute);
   }
 }

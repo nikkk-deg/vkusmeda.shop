@@ -1,67 +1,41 @@
-<div
-  class="wrapper__mobile-navbar"
-  [ngClass]="{ 'open__mobile-navbar': isOpen() }"
->
-  @if(isOpen()){
-  <ul
-    class="hidden-links-wrapper__mobile-navbar"
-    [ngClass]="{ open: isOpen() }"
-  >
-    <li class="left__mobile-navbar" (click)="setOpen(false)">
-      <a
-        (click)="setIsLogout(false)"
-        class="link-standart__mobile-navba"
-        [routerLink]="['products']"
-        routerLinkActive="router-link-active"
-      >
-        Товары
+<div class="wrapper__mobile-navbar">
+  <ul class="menu-item-list__mobile-navbar">
+    <li class="menu-item__mobile-navbar">
+      <a [routerLink]="''">
+        <img src="/assets/svg/logo.svg" alt="home link" height="60px" />
       </a>
     </li>
-    <li class="center__mobile-navbar" (click)="setOpen(false)">
-      <a
-        (click)="setIsLogout(false)"
-        class="link-standart__mobile-navba"
-        [routerLink]="['orders']"
-        routerLinkActive="router-link-active"
-      >
-        Заказы
+    <li class="menu-item__mobile-navbar">
+      <a [routerLink]="'/products'">
+        <img
+          [src]="
+            currentRoute === '/products'
+              ? '/assets/svg/current-products-icon.svg'
+              : '/assets/svg/products-icon.svg'
+          "
+          alt="products link"
+          height="50px"
+        />
       </a>
     </li>
-    <li class="right__mobile-navbar" (click)="setOpen(false)">
-      <a
-        (click)="setIsLogout(false)"
-        class="link-standart__mobile-navba"
-        [routerLink]="['about']"
-        routerLinkActive="router-link-active"
-      >
-        О нас
+    <li class="menu-item__mobile-navbar">
+      <a [routerLink]="'/about'">
+        <img
+          [src]="
+            currentRoute === '/about'
+              ? '/assets/svg/current-about-us-icon.svg'
+              : '/assets/svg/about-us-icon.svg'
+          "
+          alt="home link"
+          height="50px"
+        />
       </a>
+    </li>
+    <li class="menu-item__mobile-navbar">
+      <app-auth-icon></app-auth-icon>
+    </li>
+    <li class="menu-item__mobile-navbar">
+      <app-basket-icon></app-basket-icon>
     </li>
   </ul>
-  }
-  <div class="main__mobile-navbar">
-    <ul class="menu-item-list__mobile-navbar">
-      <li
-        class="left__mobile-navbar"
-        (click)="setIsLogout(true)"
-        (click)="setOpen(false)"
-      >
-        <app-auth-icon [isLogout]="isLogout"></app-auth-icon>
-      </li>
-      <li
-        class="burger-icon__mobile-navbar center__mobile-navbar"
-        (click)="setOpen(true)"
-      >
-        <img width="80px" src="assets/svg/burger.svg" alt="burger.svg" />
-      </li>
-
-      <li
-        class="right__mobile-navbar"
-        (click)="setIsLogout(false)"
-        (click)="setOpen(false)"
-      >
-        <app-basket-icon></app-basket-icon>
-      </li>
-    </ul>
-  </div>
 </div>

@@ -84,6 +84,17 @@
   border-bottom: var(--border);
 }
 
+.logout-btn__orders {
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--dark-red-color);
+  margin-top: 40px;
+  margin-bottom: 40px;
+  float: right;
+  width: max-content;
+  justify-self: end;
+}
+
 .order__order {
   cursor: pointer;
   display: grid;

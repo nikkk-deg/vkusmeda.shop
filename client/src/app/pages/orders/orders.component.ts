@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { authActions } from '../../data/store/auth/auth.actions';
 import { OrdersInterface } from '../../data/interfaces/orders.interface';
 import { Title } from '@angular/platform-browser';
+import { AuthService } from '../../data/services/auth.service';
 
 @Component({
   selector: 'app-orders',
@@ -18,6 +19,7 @@ export class OrdersComponent {
   productsCount = signal(0);
   orders = signal<OrdersInterface[] | null>(null);
   titleService = inject(Title);
+  authService = inject(AuthService);
 
   ngOnInit() {
     this.titleService.setTitle('Заказы');
@@ -47,5 +49,9 @@ export class OrdersComponent {
 
   getTotalJars(products: any[]) {
     return products.reduce((acc, product) => acc + product.jars, 0);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }
