@@ -26,7 +26,7 @@ export class AboutComponent {
     },
     {
       pict: '/assets/svg/docker-icon.svg',
-      text: 'Docker - конейнеризация проекта',
+      text: 'Docker - контейнеризация проекта',
     },
     {
       pict: '/assets/svg/ngnix-icon.svg',

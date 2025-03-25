@@ -1,11 +1,6 @@
 <div class="wrapper__mobile-navbar">
   <ul class="menu-item-list__mobile-navbar">
     <li class="menu-item__mobile-navbar">
-      <a [routerLink]="''">
-        <img src="/assets/svg/logo.svg" alt="home link" height="60px" />
-      </a>
-    </li>
-    <li class="menu-item__mobile-navbar">
       <a [routerLink]="'/products'">
         <img
           [src]="
@@ -14,7 +9,7 @@
               : '/assets/svg/products-icon.svg'
           "
           alt="products link"
-          height="50px"
+          height="38px"
         />
       </a>
     </li>
@@ -27,8 +22,13 @@
               : '/assets/svg/about-us-icon.svg'
           "
           alt="home link"
-          height="50px"
+          height="38px"
         />
+      </a>
+    </li>
+    <li class="menu-item__mobile-navbar">
+      <a [routerLink]="''">
+        <img src="/assets/svg/logo.svg" alt="home link" height="60px" />
       </a>
     </li>
     <li class="menu-item__mobile-navbar">
