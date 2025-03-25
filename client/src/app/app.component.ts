@@ -23,6 +23,12 @@ export class AppComponent {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
+        window.scrollTo(0, 0); // Сбрасываем скролл наверх при переходе
+      });
+
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
         const route = this.router.url.split('?')[0]; // Убираем query параметры
 
         switch (route) {
