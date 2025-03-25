@@ -5,6 +5,9 @@
   padding-top: 66px;
   max-height: 1300px;
 }
+.ellips-mobile__orders {
+  display: none;
+}
 
 .ellips__orders {
   position: absolute;
@@ -189,6 +192,14 @@
 }
 
 @media (max-width: 460px) {
+  .ellips-mobile__orders {
+    display: block;
+    position: absolute;
+    z-index: -10;
+    left: -40px;
+    top: -100px;
+    width: 460px;
+  }
   .wrapper-not-orders__orders {
     height: 100vh;
     grid-template-columns: 1fr;
@@ -222,11 +233,7 @@
   }
 
   .ellips__orders {
-    position: absolute;
-    width: 2000px;
-    left: -200px;
-    top: -400px;
-    z-index: -10;
+    display: none;
   }
 
   .order__order {
