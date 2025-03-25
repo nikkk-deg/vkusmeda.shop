@@ -174,9 +174,10 @@ img {
     display: block;
     position: absolute;
     z-index: -10;
-    left: -40px;
+    left: -25px;
     top: 0;
     width: 460px;
+    max-width: 100vw;
   }
 
   .ellips-first {
@@ -249,7 +250,6 @@ img {
 
   .action-btn,
   .action-second-btn {
-    margin-bottom: -50px;
     width: 140px;
     white-space: nowrap;
   }
@@ -267,14 +267,15 @@ img {
 
   :host {
     position: relative;
+    padding-top: 30px;
   }
   .main-page-image-wrapper {
-    margin-top: -70px;
+    margin-top: -20px;
     margin-left: 20px;
   }
 
   .active-btns {
-    bottom: 170px;
+    bottom: 50px;
     left: 50%;
   }
 }
