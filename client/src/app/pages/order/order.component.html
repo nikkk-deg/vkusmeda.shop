@@ -33,7 +33,11 @@
       <div class="order-content__order">
         <div class="image-n-title-order-content__order">
           <img
-            [src]="'assets/images/honey/' + item.productId.photos[0]"
+            [src]="
+              'assets/images/honey/90px/' +
+              item.productId.photos[0].slice(0, -3) +
+              'webp'
+            "
             width="91px"
             [alt]="'photo of' + item.productId.titleEn"
           />

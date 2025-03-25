@@ -1,7 +1,7 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectOrders, selectUser } from '../../data/store/auth/auth.selectors';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { authActions } from '../../data/store/auth/auth.actions';
 import { OrdersInterface } from '../../data/interfaces/orders.interface';
 import { Title } from '@angular/platform-browser';
@@ -20,12 +20,16 @@ export class OrdersComponent {
   orders = signal<OrdersInterface[] | null>(null);
   titleService = inject(Title);
   authService = inject(AuthService);
+  router = inject(Router);
 
   ngOnInit() {
     this.titleService.setTitle('Заказы');
   }
 
   constructor() {
+    if (!this.user()?.email) {
+      this.router.navigate(['auth']);
+    }
     effect(() => {
       this.orders.set(this.store.selectSignal(selectOrders)());
     });

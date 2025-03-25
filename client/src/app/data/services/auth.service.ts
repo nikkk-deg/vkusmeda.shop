@@ -89,5 +89,6 @@ export class AuthService {
     if (typeof window !== 'undefined' && sessionStorage) {
       sessionStorage.clear();
     }
+    this.router.navigate(['']);
   }
 }
