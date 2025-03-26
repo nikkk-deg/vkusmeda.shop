@@ -27,11 +27,13 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => {
-        window.scrollTo(0, 0); // Сбрасываем скролл наверх при переходе
-      });
+    if (typeof window !== 'undefined') {
+      this.router.events
+        .pipe(filter((event) => event instanceof NavigationEnd))
+        .subscribe(() => {
+          window.scrollTo(0, 0); // Сбрасываем скролл наверх при переходе
+        });
+    }
 
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
