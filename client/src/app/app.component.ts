@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Renderer2 } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -13,6 +13,13 @@ export class AppComponent {
   private metaService = inject(Meta);
   private titleService = inject(Title);
   private router = inject(Router);
+  r2 = inject(Renderer2);
+
+  constructor() {
+    this.router.events.subscribe(() => {
+      this.r2.removeClass(document.body, 'no-scroll');
+    });
+  }
 
   setMeta(title: string, description: string) {
     this.titleService.setTitle(title);

@@ -22,6 +22,7 @@ export class FiltersMobileComponent {
   filtersService = inject(FiltersService);
   sortControl = new FormControl('');
   isVisible = signal(false);
+  r2 = inject(Renderer2);
 
   constructor() {
     const newCategories: string[] = [];
@@ -56,5 +57,10 @@ export class FiltersMobileComponent {
 
   setIsVisible() {
     this.isVisible.set(!this.isVisible());
+    if (this.isVisible()) {
+      this.r2.addClass(document.body, 'no-scroll');
+    } else {
+      this.r2.removeClass(document.body, 'no-scroll');
+    }
   }
 }
