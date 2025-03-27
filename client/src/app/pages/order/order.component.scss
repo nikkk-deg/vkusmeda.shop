@@ -135,6 +135,8 @@
   display: grid;
   grid-template-columns: 1fr 18px;
   white-space: nowrap;
+  align-items: center;
+  gap: 4px;
   > :nth-child(1) {
     justify-self: end;
     width: max-content;
