@@ -27,6 +27,7 @@
 
 .select__filters-mobile {
   border: none;
+  color: black;
   background: none;
   background-color: transparent;
   font-weight: 100;
@@ -79,7 +80,7 @@ select:focus {
 
 .wrapper-filters__filters-mobile {
   position: fixed;
-  height: max-content;
+  height: 580px;
   bottom: 0;
   left: 0;
   right: 0;
