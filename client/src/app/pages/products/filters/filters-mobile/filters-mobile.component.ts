@@ -1,4 +1,11 @@
-import { Component, effect, inject, Renderer2, signal } from '@angular/core';
+import {
+  Component,
+  effect,
+  inject,
+  PLATFORM_ID,
+  Renderer2,
+  signal,
+} from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
 import { take } from 'rxjs';
@@ -7,6 +14,7 @@ import {
   selectFilters,
   selectProducts,
 } from '../../../../data/store/product/product.selectors';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-filters-mobile',
@@ -23,6 +31,7 @@ export class FiltersMobileComponent {
   sortControl = new FormControl('');
   isVisible = signal(false);
   r2 = inject(Renderer2);
+  platformId = inject(PLATFORM_ID);
 
   constructor() {
     const newCategories: string[] = [];
@@ -57,10 +66,12 @@ export class FiltersMobileComponent {
 
   setIsVisible() {
     this.isVisible.set(!this.isVisible());
-    if (this.isVisible()) {
-      this.r2.addClass(document.body, 'no-scroll');
-    } else {
-      this.r2.removeClass(document.body, 'no-scroll');
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.isVisible()) {
+        this.r2.addClass(document.body, 'no-scroll');
+      } else {
+        this.r2.removeClass(document.body, 'no-scroll');
+      }
     }
   }
 }
