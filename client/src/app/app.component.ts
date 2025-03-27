@@ -18,9 +18,11 @@ export class AppComponent {
   platformId = inject(PLATFORM_ID);
 
   constructor() {
-    this.router.events.subscribe(() => {
-      this.r2.removeClass(document.body, 'no-scroll');
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.router.events.subscribe(() => {
+        this.r2.removeClass(document.body, 'no-scroll');
+      });
+    }
   }
 
   setMeta(title: string, description: string) {
