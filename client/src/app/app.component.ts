@@ -1,4 +1,5 @@
-import { Component, inject, Renderer2 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, inject, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -14,6 +15,7 @@ export class AppComponent {
   private titleService = inject(Title);
   private router = inject(Router);
   r2 = inject(Renderer2);
+  platformId = inject(PLATFORM_ID);
 
   constructor() {
     this.router.events.subscribe(() => {
@@ -27,11 +29,11 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    if (typeof window !== 'undefined') {
+    if (isPlatformBrowser(this.platformId)) {
       this.router.events
         .pipe(filter((event) => event instanceof NavigationEnd))
         .subscribe(() => {
-          window.scrollTo(0, 0); // Сбрасываем скролл наверх при переходе
+          window.scrollTo(0, 0);
         });
     }
 
