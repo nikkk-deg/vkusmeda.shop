@@ -47,3 +47,18 @@
   grid-template-columns: 1fr 15px;
   width: max-content;
 }
+
+@media (max-width: 460px) {
+  .card-wrapper__product-card {
+    width: 100%;
+    height: 340px;
+  }
+
+  .iamge__product-card {
+    width: 300px;
+  }
+
+  .price-with-btn__product-card {
+    grid-template-columns: 1fr 100px;
+  }
+}

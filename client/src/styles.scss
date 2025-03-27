@@ -122,3 +122,13 @@ a {
 a:before {
   color: black;
 }
+
+* {
+  -webkit-tap-highlight-color: transparent; /* Отключает синий фон */
+  outline: none; /* Убирает контуры при фокусе */
+}
+
+img,
+div {
+  touch-action: manipulation; /* Убирает задержку клика и лишнее выделение */
+}
