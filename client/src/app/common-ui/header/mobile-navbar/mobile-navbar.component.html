@@ -28,7 +28,15 @@
     </li>
     <li class="menu-item__mobile-navbar">
       <a [routerLink]="''">
-        <img width="70px" src="assets/svg/logo.svg" alt="logo.svg" />
+        <img
+          width="38px"
+          [src]="
+            currentRoute === '/'
+              ? '/assets/svg/current-home-icon.svg'
+              : '/assets/svg/home-icon.svg'
+          "
+          alt="logo"
+        />
       </a>
     </li>
     <li class="menu-item__mobile-navbar">

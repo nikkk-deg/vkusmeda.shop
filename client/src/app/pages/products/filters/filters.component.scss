@@ -8,7 +8,7 @@
 }
 .wrapper-desktop__filters {
   position: sticky;
-  max-height: calc(100vh - 20px);
+  maxw-height: calc(100vh - 20px);
   top: 10px;
   overflow-y: auto;
 }
@@ -26,6 +26,13 @@
 
 @media (max-width: 460px) {
   :host {
+  }
+  .wrapper-desktop__filters {
+    display: none;
+  }
+
+  .wrapper-mobile__filters {
+    display: block;
     border: var(--border);
     margin: 0;
     padding: 0;
@@ -35,12 +42,8 @@
     border-radius: 22px;
     background: #fff;
     bottom: 100px;
-  }
-  .wrapper-desktop__filters {
-    display: none;
-  }
-
-  .wrapper-mobile__filters {
-    display: block;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 70px;
   }
 }

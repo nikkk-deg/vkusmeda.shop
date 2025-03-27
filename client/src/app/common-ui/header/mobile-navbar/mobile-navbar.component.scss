@@ -16,10 +16,11 @@
 .menu-item-list__mobile-navbar {
   display: grid;
   list-style: none;
-  grid-template-columns: 38px 38px 60px 38px 38px;
+  grid-template-columns: 38px 38px 38px 38px 38px;
   justify-content: center;
   align-items: center;
   gap: clamp(20px, 8vw, 50px);
   padding: 6px;
+  margin-top: 10px;
   background: #ffffff;
 }
