@@ -93,6 +93,8 @@
   font-weight: 300;
   font-size: 36px;
   display: grid;
+  align-items: center;
+  gap: 7px;
   grid-template-columns: max-content 1fr;
 }
 

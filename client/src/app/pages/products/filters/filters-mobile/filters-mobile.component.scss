@@ -1,5 +1,6 @@
 :host {
   display: grid;
+  border: none;
 }
 
 .title__filters-mobile {
@@ -14,10 +15,21 @@
   justify-content: center;
   justify-items: center;
   justify-self: center;
+  width: 300px;
+  position: fixed;
+  left: 50%;
+  bottom: 70px;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 46px;
+  border-radius: 22px;
+  background: #fff;
+  border: var(--border);
 }
 
 .wrapper-hidden__filters-mobile {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   justify-items: center;

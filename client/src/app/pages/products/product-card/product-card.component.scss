@@ -25,6 +25,9 @@
   font-weight: 200;
   font-size: 11px;
 }
+.price_product-card {
+  margin-left: 5px;
+}
 
 .caption__product-card {
   font-weight: 100;
@@ -51,7 +54,7 @@
 @media (max-width: 460px) {
   .card-wrapper__product-card {
     width: 100%;
-    height: 340px;
+    height: 370px;
   }
 
   .iamge__product-card {

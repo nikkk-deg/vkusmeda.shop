@@ -2,9 +2,7 @@
   <a [routerLink]="['/product/' + product._id]">
     <img
       [routerLink]="['/product/' + product._id]"
-      [src]="
-        '/assets/images/honey/300px/' + product.photos[0].slice(0, -3) + 'webp'
-      "
+      [src]="imagePath"
       [alt]="product.titleRu + ' photo'"
       class="iamge__product-card"
     />
@@ -21,7 +19,7 @@
       {{ product.price }}
 
       <span class="price_product-card">
-        <img width="17px" src="/assets/svg/rubble-icon.svg" alt="rubble icon"
+        <img width="8px" src="/assets/svg/rubble-icon.svg" alt="rubble icon"
       /></span>
     </p>
     <app-add-to-basket [product]="product"></app-add-to-basket>
