@@ -1,4 +1,10 @@
-import { Component, HostListener, inject, Input } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  inject,
+  Input,
+  PLATFORM_ID,
+} from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ProductInterface } from '../../../data/interfaces/product.interface';
 import { BasketService } from '../../../data/services/basket.service';
@@ -6,6 +12,7 @@ import { Store } from '@ngrx/store';
 import { authActions } from '../../../data/store/auth/auth.actions';
 import { selectUser } from '../../../data/store/auth/auth.selectors';
 import { AddToBasketComponent } from '../../../common-ui/add-to-basket/add-to-basket.component';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-product-card',
@@ -19,6 +26,7 @@ export class ProductCardComponent {
   store = inject(Store);
   user = this.store.selectSignal(selectUser);
   imagePath: string = '';
+  platformId = inject(PLATFORM_ID);
 
   @Input() product: ProductInterface = {
     _id: '',
@@ -33,11 +41,13 @@ export class ProductCardComponent {
   };
 
   ngOnInit() {
-    const size = window.innerWidth < 461 ? '300px' : '222px';
-    this.imagePath =
-      `/assets/images/honey/${size}/` +
-      this.product.photos[0].slice(0, -3) +
-      'webp';
+    if (isPlatformBrowser(this.platformId)) {
+      const size = window.innerWidth < 461 ? '300px' : '222px';
+      this.imagePath =
+        `/assets/images/honey/${size}/` +
+        this.product.photos[0].slice(0, -3) +
+        'webp';
+    }
   }
 
   navigateTo(_id: string) {
