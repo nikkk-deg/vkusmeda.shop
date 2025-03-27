@@ -9,13 +9,7 @@ import { BasketIconComponent } from '../basket-icon/basket-icon.component';
 
 @Component({
   selector: 'app-mobile-navbar',
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    AuthIconComponent,
-    BasketIconComponent,
-    CommonModule,
-  ],
+  imports: [RouterLink, AuthIconComponent, BasketIconComponent, CommonModule],
   templateUrl: './mobile-navbar.component.html',
   styleUrl: './mobile-navbar.component.scss',
 })
