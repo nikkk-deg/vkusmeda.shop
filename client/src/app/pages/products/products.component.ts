@@ -1,6 +1,13 @@
 import { Store } from '@ngrx/store';
 import { ProductInterface } from './../../data/interfaces/product.interface';
-import { Component, effect, inject, signal } from '@angular/core';
+import {
+  Component,
+  effect,
+  ElementRef,
+  inject,
+  signal,
+  ViewChild,
+} from '@angular/core';
 import {
   selectFilters,
   selectProducts,
@@ -33,8 +40,16 @@ export class ProductsComponent {
     });
   }
 
+  @ViewChild('catalogContainer') catalogContainer!: ElementRef;
+
   getCatalogMinHeight(): string {
     return this.filteredProducts().length === 1 ? '1000px' : 'auto';
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.filteredProducts().length === 1) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
 
   setProductsWithFilters() {

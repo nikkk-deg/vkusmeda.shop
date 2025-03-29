@@ -1,5 +1,9 @@
 <app-filters></app-filters>
-<div class="catalog" [ngStyle]="{ 'min-height': getCatalogMinHeight() }">
+<div
+  class="catalog"
+  #catalogContainer
+  [ngStyle]="{ 'min-height': getCatalogMinHeight() }"
+>
   @for (product of filteredProducts(); track product._id) {
   <app-product-card [product]="product"></app-product-card>
   }
