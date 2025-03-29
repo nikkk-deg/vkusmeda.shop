@@ -26,9 +26,6 @@
     grid-template-columns: 1fr;
   }
 
-  .catalog:has(app-product-card:only-child) {
-    margin-bottom: 1000px;
-  }
   .catalog {
     width: 300px;
     grid-template-columns: 1fr;

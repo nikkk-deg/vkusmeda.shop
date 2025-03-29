@@ -8,10 +8,11 @@ import {
 import { ProductCardComponent } from './product-card/product-card.component';
 import { FiltersComponent } from './filters/filters.component';
 import { Title } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-products',
-  imports: [ProductCardComponent, FiltersComponent],
+  imports: [ProductCardComponent, FiltersComponent, CommonModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
 })
@@ -30,6 +31,10 @@ export class ProductsComponent {
     effect(() => {
       this.filteredProducts.set(this.setProductsWithFilters());
     });
+  }
+
+  getCatalogMinHeight(): string {
+    return this.filteredProducts().length === 1 ? '1000px' : 'auto';
   }
 
   setProductsWithFilters() {
