@@ -59,9 +59,6 @@ export class MakeOrderComponent {
           0
         )
       );
-      if (this.totalPrice() === 0) {
-        this.router.navigate(['/basket']);
-      }
     });
 
     effect(() => {
