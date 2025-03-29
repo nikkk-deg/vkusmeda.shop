@@ -1,4 +1,4 @@
-FROM node:18-slim
+FROM node:18-bullseye
 RUN npm install -g @angular/cli
 RUN apk add --no-cache curl
 
