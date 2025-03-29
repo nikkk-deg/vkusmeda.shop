@@ -1,10 +1,12 @@
 FROM node:18-alpine
-RUN npm install -g @angular/cli
+
+RUN yarn global add @angular/cli
 RUN apk add --no-cache curl
 
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
+
 COPY . .
 
 COPY entrypoint.sh .
