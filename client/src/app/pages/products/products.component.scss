@@ -24,8 +24,10 @@
   :host {
     margin-top: 0;
     grid-template-columns: 1fr;
-    justify-items: center;
-    min-height: 700px;
+  }
+
+  .catalog:has(app-product-card:only-child) {
+    padding-bottom: 500px;
   }
   .catalog {
     width: 300px;

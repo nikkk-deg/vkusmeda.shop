@@ -20,6 +20,7 @@ import { MakeOrderComponent } from './pages/make-order/make-order.component';
 import { OrderComponent } from './pages/order/order.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProductResolver } from './data/services/product.resolver';
+import { SuccessEmailComponent } from './pages/success-email/success-email.component';
 
 export const routes: Routes = [
   {
@@ -38,7 +39,7 @@ export const routes: Routes = [
       { path: '', component: MainPageComponent },
       { path: 'products', component: ProductsComponent },
       { path: 'basket', component: BasketComponent },
-      // { path: 'make-order', component: MakeOrderComponent },
+      { path: 'make-order', component: MakeOrderComponent },
       { path: 'about', component: AboutComponent },
       { path: 'orders', component: OrdersComponent },
       {
@@ -47,6 +48,8 @@ export const routes: Routes = [
         resolve: { product: ProductResolver },
       },
       { path: 'order/:orderId', component: OrderComponent },
+      { path: 'success', component: SuccessEmailComponent },
+
       { path: '**', component: NotFoundComponent },
     ],
   },

@@ -27,7 +27,10 @@
     </ul>
     <div class="select__filters-mobile">
       <div class="title-select____filters-mobile">Сначала</div>
-      <select [formControl]="sortControl" class="select__filters-mobile">
+      <select
+        [formControl]="sortControl"
+        class="select__filters-mobile select-wrapper"
+      >
         <option value="popular">популярное</option>
         <option value="price-down">дешевле</option>
         <option value="price-up">дороже</option>

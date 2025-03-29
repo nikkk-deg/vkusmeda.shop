@@ -71,6 +71,7 @@ export class OrderService {
 
   makeOrder(email: string) {
     const newArray: any[] = [];
+
     this.preOrder().forEach((item) => {
       const object = {
         productId: item.productId._id,
@@ -84,7 +85,24 @@ export class OrderService {
       products: newArray,
     };
 
-    this.#http.post(`${this.apiUrl}create`, body).pipe(take(1)).subscribe();
+    this.store.dispatch(authActions.loadEmail());
+
+    this.#http
+      .post(`${this.apiUrl}create`, body)
+      .pipe(take(1))
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/success']);
+          this.store.dispatch(authActions.completeEmail());
+        },
+        error: (error) => {
+          this.store.dispatch(authActions.errorEmail());
+          setTimeout(() => {
+            this.store.dispatch(authActions.completeEmail());
+          }, 1500);
+          console.error(`Error in send email request - \n ${error}`);
+        },
+      });
   }
 
   saveUser(userData: {

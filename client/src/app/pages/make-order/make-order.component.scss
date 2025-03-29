@@ -22,6 +22,7 @@
 
 .form__make-order {
   margin-top: 50px;
+  min-height: 600px;
 }
 
 .label__make-order {
@@ -162,6 +163,8 @@ a {
   white-space: nowrap;
   display: grid;
   font-size: 14px;
+  align-items: center;
+  gap: 4px;
   grid-template-columns: 1fr 18px;
 }
 .delivery-text__make-order {
@@ -200,6 +203,8 @@ a {
   font-size: 14px;
   grid-template-columns: 1fr 18px;
   font-weight: 300;
+  align-items: center;
+  gap: 2px;
 
   color: var(--red-color);
 }
@@ -219,6 +224,8 @@ a {
   white-space: nowrap;
   display: grid;
   grid-template-columns: 1fr 18px;
+  align-items: center;
+  gap: 4px;
 }
 
 .submit-order__make-order {
@@ -263,6 +270,11 @@ a {
   .submit-order__make-order {
     width: 300px;
     margin-bottom: 10px;
+  }
+
+  .form__make-order {
+    margin-top: 50px;
+    min-height: 200px;
   }
 }
 

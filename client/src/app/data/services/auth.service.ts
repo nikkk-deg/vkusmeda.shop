@@ -27,14 +27,14 @@ export class AuthService {
       .pipe(take(1))
       .subscribe({
         next: () => {
-          this.router.navigate(['']);
+          this.router.navigate(['/success']);
           this.store.dispatch(authActions.completeEmail());
         },
         error: (error) => {
           this.store.dispatch(authActions.errorEmail());
           setTimeout(() => {
             this.store.dispatch(authActions.completeEmail());
-          }, 1000);
+          }, 1500);
           console.error(`Error in send email request - \n ${error}`);
         },
       });

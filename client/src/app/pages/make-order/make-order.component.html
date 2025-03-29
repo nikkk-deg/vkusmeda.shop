@@ -7,12 +7,6 @@
   <div class="form__make-order">
     <form [formGroup]="form">
       <label class="label__make-order"
-        >Имя<input formControlName="name" type="text"
-      /></label>
-      <label class="label__make-order"
-        >Фамилия<input formControlName="lastName" type="text"
-      /></label>
-      <label class="label__make-order"
         >Электронная почта<input formControlName="email" type="email"
       /></label>
 
@@ -25,26 +19,6 @@
         Неверный формат электронной почты
       </div>
       }
-
-      <label class="label__make-order"
-        >Телефон<input formControlName="phoneNumber" type="number"
-      /></label>
-      <label class="custom-checkbox custom-checkbox2 checkbox-form__make-order">
-        <input
-          (click)="changeChecked()"
-          [checked]="checked()"
-          type="checkbox"
-        />
-        <span class="checkbox-icon"></span>Обновить мои данные (старые данные
-        будут удалены)
-      </label>
-
-      <label class="label__make-order">
-        Примечание к заказу<textarea
-          maxlength="400"
-          placeholder="Примечание к Вашему заказу, например, особые пожелания отделу сборки "
-        ></textarea>
-      </label>
     </form>
   </div>
 
@@ -103,7 +77,7 @@
         <img
           src="/assets/svg/rubble-icon.svg"
           alt="rubble-icon"
-          width="17px"
+          width="9px"
           class="rubble-icon__basket"
         />
       </div>
@@ -124,7 +98,7 @@
       <img
         src="/assets/svg/rubble-red-icon.svg"
         alt="rubble-icon"
-        width="17px"
+        width="9px"
         class="rubble-icon__basket"
       />
     </div>
@@ -137,7 +111,7 @@
       <img
         src="/assets/svg/rubble-icon.svg"
         alt="rubble-icon"
-        width="23px"
+        width="11px"
         class="rubble-icon__basket"
       />
     </div>
