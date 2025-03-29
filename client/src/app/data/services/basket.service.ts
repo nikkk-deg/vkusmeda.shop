@@ -8,7 +8,7 @@ import {
 } from '../interfaces/basket.interface';
 import { catchError, delay, EMPTY, of, take, tap } from 'rxjs';
 import { authActions } from '../store/auth/auth.actions';
-import { selectUser } from '../store/auth/auth.selectors';
+import { selectBasket, selectUser } from '../store/auth/auth.selectors';
 import { LocalStorageService } from './local-storage.service';
 import { environment } from '../../../enviroments/environment';
 
@@ -18,11 +18,11 @@ import { environment } from '../../../enviroments/environment';
 export class BasketService {
   #http = inject(HttpClient);
   apiUrl = `${environment.apiUrl}basket/`;
-
   cookieService = inject(CookieService);
   store = inject(Store);
   user = this.store.selectSignal(selectUser);
   localStorageService = inject(LocalStorageService);
+  basket = this.store.selectSignal(selectBasket);
 
   getBasket(userId: string) {
     const headers = {
@@ -161,16 +161,15 @@ export class BasketService {
           jars: item.jars,
         });
       });
+      this.localStorageService.clear();
+
       const body = {
         userId: this.user()?._id,
         products: basketArrayOfId,
       };
-      return this.#http.post(`${this.apiUrl}syncBasket`, body, headers).pipe(
-        take(1),
-        tap(() => {
-          this.localStorageService.clear();
-        })
-      );
+      return this.#http
+        .post(`${this.apiUrl}syncBasket`, body, headers)
+        .pipe(take(1));
     }
     return EMPTY;
   }
