@@ -13,6 +13,36 @@
   margin-top: 56px;
 }
 
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: max-content;
+}
+
+.select-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px 30px 5px 10px; /* Оставляем место для стрелки */
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Добавляем кастомную стрелку */
+.select-wrapper::after {
+  content: "▼";
+  font-size: 14px;
+  color: #333;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
 .title-select__filters-desktop {
   font-weight: 300;
   font-size: 24px;
@@ -29,6 +59,11 @@
 
 select:focus {
   outline: none;
+}
+
+select:before {
+  outline: none;
+  background-color: #ffd700;
 }
 
 .categories__filters-desktop {

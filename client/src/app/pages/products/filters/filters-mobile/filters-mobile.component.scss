@@ -8,6 +8,36 @@
   font-size: 20px;
 }
 
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: max-content;
+}
+
+.select-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px 30px 5px 10px; /* Оставляем место для стрелки */
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Добавляем кастомную стрелку */
+.select-wrapper::after {
+  content: "▼";
+  font-size: 14px;
+  color: #333;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
 .wrapper__filters-mobile {
   display: grid;
   grid-template-columns: 1fr;
